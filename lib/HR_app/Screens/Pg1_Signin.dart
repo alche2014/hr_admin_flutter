@@ -8,7 +8,7 @@ class Signin_Pg1 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          //--------------------stacked container for styling----------------
+          //--------------------stacked container for styling------------------
           Align(
             alignment: Alignment.topRight,
             child: Container(
