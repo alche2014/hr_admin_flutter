@@ -13,6 +13,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(
           'Profile',
           style: TextStyle(color: Colors.white),

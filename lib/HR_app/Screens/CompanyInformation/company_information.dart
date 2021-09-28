@@ -38,8 +38,7 @@ class CompanyInformation extends StatelessWidget {
           ),
 //------------------body-----------------------
           Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -50,8 +49,7 @@ class CompanyInformation extends StatelessWidget {
                   CircleAvatar(
                     radius: 80,
                     backgroundColor: Colors.transparent,
-                    child:
-                        Image(image: AssetImage('assets/images/Frame.png')),
+                    child: Image(image: AssetImage('assets/images/Frame.png')),
                   ),
                   SizedBox(height: 10),
                   Text('Company Informtion'),

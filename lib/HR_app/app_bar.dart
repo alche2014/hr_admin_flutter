@@ -1,6 +1,7 @@
 //.................custom appbar...............
 
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/constants.dart';
 
 class app_bar extends StatelessWidget implements PreferredSizeWidget {
   final String titilee;
@@ -13,10 +14,10 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         title: Text(titilee),
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         automaticallyImplyLeading: leading ?? true,
         actions: <Widget>[
           IconButton(

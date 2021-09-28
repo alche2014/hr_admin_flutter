@@ -23,9 +23,9 @@ class _NavigationBarState extends State<NavigationBar> {
   int _currentindex = 0;
 
   final tabs = [
-    Center(child: Profile()),
+    Center(child: Home1()),
     Center(child: Employee()),
-    Center(child: Personal_Information()),
+    Center(child: Profile()),
     Center(child: Skills()),
   ];
   @override

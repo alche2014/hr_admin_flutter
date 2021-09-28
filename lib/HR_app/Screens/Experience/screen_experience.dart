@@ -14,45 +14,25 @@ class _ExperienceState extends State<Experience> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
 //-----------------------Appbar--------------------
       appBar: app_bar(titilee: 'Experience'),
 
-      body: Stack(
-        children: [
-//--------------------background Design--------------
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.15,
-              width: MediaQuery.of(context).size.width * 0.3,
-              decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(150),
-                ),
-              ),
+      body: ListView.builder(
+        itemCount: myExperience.length,
+        itemBuilder: (_, index) {
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+           
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Theme.of(context).scaffoldBackgroundColor,
+              border: Border.all(color: Colors.grey, width: 1),
             ),
-          ),
-          //-------------------Body-----------------------
-          ListView.builder(
-            itemCount: myExperience.length,
-            itemBuilder: (_, index) {
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-               
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  border: Border.all(color: Colors.grey, width: 1),
-                ),
-                child: ExperienceCard(
-                  model: myExperience[index],
-                ),
-              );
-            },
-          ),
-        ],
+            child: ExperienceCard(
+              model: myExperience[index],
+            ),
+          );
+        },
       ),
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(

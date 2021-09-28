@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class EmployeeCard extends StatelessWidget {
@@ -6,14 +7,14 @@ class EmployeeCard extends StatelessWidget {
   // String image ;
   // String name;
   // String designation;
-  var model;
+  MyEmployee model;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Material(
-        elevation: 2,
+        elevation: 1,
         borderRadius: BorderRadius.circular(10),
         color: MediaQuery.of(context).platformBrightness == Brightness.light
             ? Colors.white
@@ -21,8 +22,8 @@ class EmployeeCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => model.press));
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => model.press));
           },
           child: ListTile(
             leading: Material(

@@ -52,19 +52,19 @@ ThemeData darkThemeData(BuildContext context) {
 final appBarTheme = AppBarTheme(
     centerTitle: false,
     elevation: 0,
-    backgroundColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black),
-    textTheme: TextTheme(
-      headline6: TextStyle(
-          color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-    )
+    backgroundColor: kPrimaryColor
+    // iconTheme: IconThemeData(color: Colors.black),
+    // textTheme: TextTheme(
+    //   headline6: TextStyle(
+    //       color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+    // )
     // titleTextStyle: TextStyle(color: Colors.black, decorationColor: Colors.black, fontWeight: FontWeight.bold,)
     );
 
 final appBarThemedark = AppBarTheme(
   centerTitle: false,
   elevation: 0,
-  backgroundColor: Colors.transparent,
+  backgroundColor: kPrimaryColor,
 );
 final tabBarTheme = TabBarTheme(labelColor: Colors.black, unselectedLabelColor: Colors.grey[800]);
 final tabBarThemedark = TabBarTheme(labelColor: Colors.white);

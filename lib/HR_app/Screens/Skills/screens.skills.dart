@@ -14,115 +14,95 @@ class _SkillsState extends State<Skills> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: app_bar(
         titilee: 'Skills',
       ),
-      body: Stack(
-        children: [
-//----------------------background Design-----------------
-           Align(
-      alignment: Alignment.topLeft,
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.15,
-        width: MediaQuery.of(context).size.width * 0.3,
-        decoration: BoxDecoration(
-          color: kPrimaryColor.withOpacity(0.2),
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(150),
-          ),
-        ),
-      ),
-    ),
-//-----------------------body-----------------
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 100, 20, 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //--------------------textfield-----------------------------
-                    TextFormField(
-                      controller: _textcontroller,
-                      decoration: InputDecoration(
-                        hintText: 'Add Skills',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        // filled: true,
-                        // fillColor: Colors.white,
-                        fillColor: MediaQuery.of(context).platformBrightness ==
-                                Brightness.light
-                            ? kPrimaryColor.withOpacity(0.1)
-                            : kContentColorLightTheme.withOpacity(0.1),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey, width: 1),
-                        ),
-                      ),
-                      onFieldSubmitted: (value) {
-                        
-                        setState(() {
-                          if (_textcontroller.text.isNotEmpty)
-                            Chipmaker.choosed.add(_textcontroller.text);
-                        });
-                        _textcontroller.clear();
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                        final regExp = RegExp(pattern);
-                        if (value.isEmpty) {
-                          return null;
-                        } else if (!regExp.hasMatch(value)) {
-                          return 'Enter a Valid Name';
-                        } else {
-                          return null;
-                        }
-                      },
+                //--------------------textfield-----------------------------
+                TextFormField(
+                  controller: _textcontroller,
+                  decoration: InputDecoration(
+                    hintText: 'Add Skills',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    // filled: true,
+                    // fillColor: Colors.white,
+                    fillColor: MediaQuery.of(context).platformBrightness ==
+                            Brightness.light
+                        ? kPrimaryColor.withOpacity(0.1)
+                        : kContentColorLightTheme.withOpacity(0.1),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey, width: 1),
                     ),
-                    SizedBox(height: 10),
-                    if (Chipmaker.choosed.isNotEmpty)
-                      Container(
-                        child: Chipmaker(),
-                      ),
-                  ],
-                ),
-                //------------------------Buttons------------------------
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 15,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey, width: 1),
                     ),
-                    onPressed: () {
-                      // Navigator.of(context)
-                      //     .push(MaterialPageRoute(builder: (context) => Nav()));
-                    },
-                    child: Text(
-                      'Save',
-                      style: TextStyle(color: Colors.white),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey, width: 1),
                     ),
                   ),
-                )
+                  onFieldSubmitted: (value) {
+                    
+                    setState(() {
+                      if (_textcontroller.text.isNotEmpty)
+                        Chipmaker.choosed.add(_textcontroller.text);
+                    });
+                    _textcontroller.clear();
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
+                    final regExp = RegExp(pattern);
+                    if (value.isEmpty) {
+                      return null;
+                    } else if (!regExp.hasMatch(value)) {
+                      return 'Enter a Valid Name';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(height: 10),
+                if (Chipmaker.choosed.isNotEmpty)
+                  Container(
+                    child: Chipmaker(),
+                  ),
               ],
             ),
-          ),
-        ],
+            //------------------------Buttons------------------------
+            FractionallySizedBox(
+              widthFactor: 1,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (context) => Nav()));
+                },
+                child: Text(
+                  'Save',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
