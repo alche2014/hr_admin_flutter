@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
-import 'package:hr_admin/HR_app/Screens/Employee/components/employee_card.dart';
+import 'package:hr_admin/HR_app/Screens/Employee/components/slidable_widget.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class Employee extends StatelessWidget {
@@ -34,7 +33,6 @@ class Employee extends StatelessWidget {
       ),
 
       body: ListView(
-        // mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -50,15 +48,9 @@ class Employee extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: myEmployee.length,
                   itemBuilder: (_, index) {
-                    return Slidable(
-                      actionPane: SlidableBehindActionPane(),
-                      child: EmployeeCard(model: myEmployee[index]),
-                      secondaryActions: [
-                        IconSlideAction(
-                          icon: Icons.delete_forever_rounded,
-                          onTap: () {},
-                        )
-                      ],
+                    return SlidabldWidget(
+                      index: index,
+                      model: myEmployee,
                     );
                   },
                 ),
@@ -79,15 +71,9 @@ class Employee extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: myEmployee.length,
                   itemBuilder: (_, index) {
-                    return Slidable(
-                      actionPane: SlidableDrawerActionPane(),
-                      child: EmployeeCard(model: myEmployee[index]),
-                      secondaryActions: [
-                        IconSlideAction(
-                          icon: Icons.delete_forever_rounded,
-                          onTap: () {},
-                        )
-                      ],
+                    return SlidabldWidget(
+                      index: index,
+                      model: myEmployee,
                     );
                   },
                 ),
@@ -108,15 +94,9 @@ class Employee extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: myEmployee.length,
                   itemBuilder: (_, index) {
-                    return Slidable(
-                      actionPane: SlidableDrawerActionPane(),
-                      child: EmployeeCard(model: myEmployee[index]),
-                      secondaryActions: [
-                        IconSlideAction(
-                          icon: Icons.delete_forever_rounded,
-                          onTap: () {},
-                        )
-                      ],
+                    return SlidabldWidget(
+                      index: index,
+                      model: myEmployee,
                     );
                   },
                 ),

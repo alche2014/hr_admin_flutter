@@ -6,7 +6,8 @@ import 'package:hr_admin/HR_app/constants.dart';
 class app_bar extends StatelessWidget implements PreferredSizeWidget {
   final String titilee;
   bool leading;
-  app_bar({this.titilee, this.leading});
+  String myicon;
+  app_bar({this.titilee, this.leading, this.myicon});
 
   @override
   Size get preferredSize => Size.fromHeight(60.0);
@@ -20,15 +21,24 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget {
         // backgroundColor: Colors.transparent,
         automaticallyImplyLeading: leading ?? true,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.notifications,
+          if (myicon == 'tune')
+            IconButton(
+              icon: Icon(Icons.tune),
+              onPressed: () {
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (context) => Notifications()));
+              },
             ),
-            onPressed: () {
-              // Navigator.of(context).push(
-              //     MaterialPageRoute(builder: (context) => Notifications()));
-            },
-          )
+          if (myicon != 'tune')
+            IconButton(
+              icon: Icon(
+                Icons.notifications,
+              ),
+              onPressed: () {
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (context) => Notifications()));
+              },
+            ),
         ],
       ),
     );

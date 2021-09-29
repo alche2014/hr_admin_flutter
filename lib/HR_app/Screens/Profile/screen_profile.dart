@@ -3,7 +3,7 @@ import 'package:hr_admin/HR_app/Screens/Education/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Education/Components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/model.dart';
-import 'package:hr_admin/HR_app/Screens/Profile/Components/top_tile.dart';
+import 'package:hr_admin/HR_app/Screens/top_tile.dart';
 import 'package:hr_admin/HR_app/Screens/Skills/chip_maker.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
@@ -31,7 +31,6 @@ class Profile extends StatelessWidget {
         child: Column(
           // mainAxisSize: MainAxisSize.min,
           children: [
-            
             Stack(
               children: [
                 Container(
@@ -47,7 +46,10 @@ class Profile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 20),
-                      FormTopTile(),
+                      FormTopTile(
+                        trailing_edit: true,
+                        // press: null,
+                      ),
                     ],
                   ),
                 ),

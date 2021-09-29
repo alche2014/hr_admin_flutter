@@ -7,6 +7,9 @@ class FormTopTile extends StatelessWidget {
   // String image;
   // String name;
   // String designation;
+  bool trailing_edit;
+  var press;
+  FormTopTile({this.press, this.trailing_edit});
 
   @override
   Widget build(BuildContext context) {
@@ -84,27 +87,40 @@ class FormTopTile extends StatelessWidget {
               ),
             ],
           ),
-          InkWell(
-            onTap: () {
-              // Navigator.push(
-              // context,
-              // MaterialPageRoute(
-              //     builder: (context) => PersonalInformation2()));
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Edit',
-                  style: TextStyle(color: kPrimaryColor),
+          if (trailing_edit == true)
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                // borderRadius: BorderRadius.circular(100),
+                // radius: 30,
+                // highlightColor: kPrimaryColor,
+                // hoverColor: Colors.grey,autofocus: true,splashColor: Colors.white,
+                onTap: () {
+                  // Navigator.push(
+                  // context,
+                  // MaterialPageRoute(
+                  //     builder: (context) => press()));
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Edit',
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    Icon(
+                      Icons.edit,
+                      color: kPrimaryColor,
+                    )
+                  ],
                 ),
-                Icon(
-                  Icons.edit,
-                  color: kPrimaryColor,
-                )
-              ],
+              ),
             ),
-          ),
+          if (trailing_edit == false)
+            Container(
+              height: 10,
+              width: 10,
+            ),
         ],
       ),
     );

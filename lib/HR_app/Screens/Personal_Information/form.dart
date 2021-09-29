@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-enum Gender { Male, Female }
+enum Gender { Male, Female, Both }
 
 class Personal_Info_Form extends StatefulWidget {
   @override
