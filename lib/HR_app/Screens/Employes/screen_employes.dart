@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CheckinHistory/screen_checkin_history.dart';
 import 'package:hr_admin/HR_app/Screens/Employes/Components/employes_card.dart';
+import 'package:hr_admin/HR_app/Screens/Profile/screen_profile.dart';
+import 'package:hr_admin/HR_app/Screens/Requests/screen_requests.dart';
 import 'package:hr_admin/HR_app/Screens/top_tile.dart';
 
 class Employes extends StatelessWidget {
   String text1 = 'Personal Information';
   String text2 = 'Attendence';
   String text3 = 'Requests';
-  var next; //= new PersonalInformation1();
-  var next2; // = new Experience1();
+  var next = Profile();
+  var next2 = CheckinHistory();
+  var next3 = Requests();
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +81,8 @@ class Employes extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 EmployesCard(text1, next),
-                EmployesCard(text2, next),
-                EmployesCard(text3, next2),
+                EmployesCard(text2, next2),
+                EmployesCard(text3, next3),
               ],
             ),
           )

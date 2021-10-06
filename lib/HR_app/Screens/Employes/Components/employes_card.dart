@@ -12,16 +12,15 @@ class EmployesCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Material(
         elevation: 3,
-        color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.light
-                        ? Theme.of(context).scaffoldBackgroundColor
-                        : Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
+        color: MediaQuery.of(context).platformBrightness == Brightness.light
+            ? Theme.of(context).scaffoldBackgroundColor
+            : Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: () {
-            // Navigator.of(context)
-            //     .push(MaterialPageRoute(builder: (context) => next));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => next));
           },
           child: Container(
             padding: EdgeInsets.all(10),

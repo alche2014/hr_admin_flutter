@@ -51,7 +51,6 @@ class _SkillsState extends State<Skills> {
                     ),
                   ),
                   onFieldSubmitted: (value) {
-                    
                     setState(() {
                       if (_textcontroller.text.isNotEmpty)
                         Chipmaker.choosed.add(_textcontroller.text);
@@ -92,8 +91,7 @@ class _SkillsState extends State<Skills> {
                   ),
                 ),
                 onPressed: () {
-                  // Navigator.of(context)
-                  //     .push(MaterialPageRoute(builder: (context) => Nav()));
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'Save',

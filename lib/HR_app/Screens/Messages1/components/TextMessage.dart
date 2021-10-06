@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
 import 'package:hr_admin/HR_app/constants.dart';
-import 'package:intl/intl.dart';
-import 'package:swipe_to/swipe_to.dart';
-
 
 class TextMessage extends StatelessWidget {
   const TextMessage({

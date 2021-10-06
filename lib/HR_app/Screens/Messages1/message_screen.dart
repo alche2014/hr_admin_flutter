@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/body.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
-import 'package:hr_admin/HR_app/constants.dart';
 
 class MessagesScreen extends StatelessWidget with ChangeNotifier {
   

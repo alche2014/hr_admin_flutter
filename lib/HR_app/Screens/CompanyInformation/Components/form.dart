@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Pg1_Signin.dart';
+import 'package:hr_admin/HR_app/Screens/navigationbar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class FormCompanyInfo extends StatefulWidget {
@@ -118,41 +120,6 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             },
           ),
           SizedBox(height: 10),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Phone',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-              final regExp = RegExp(pattern);
-
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
-              } else {
-                return null;
-              }
-            },
-          ),
-          SizedBox(height: 10),
 //-----------------------DropDown-------------------
           Container(
             padding: EdgeInsets.all(8),
@@ -227,8 +194,8 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => NavigationBar()));
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

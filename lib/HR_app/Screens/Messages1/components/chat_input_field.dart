@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/message_screen.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ChatInputField extends StatefulWidget {
   ChatInputField({
@@ -12,6 +15,19 @@ class ChatInputField extends StatefulWidget {
 }
 
 class _ChatInputFieldState extends State<ChatInputField> {
+  File _image;
+  Future getimage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return;
+    File imagetemp = File(image.path);
+    setState(() {
+      this._image = imagetemp;
+      addimage(this._image);
+      MessagesScreen.length.value += 1;
+      Navigator.pop(context);
+    });
+  }
+
   TextEditingController _controller = new TextEditingController();
   bool istyping = false;
 
@@ -21,6 +37,17 @@ class _ChatInputFieldState extends State<ChatInputField> {
       issender: true,
       date: DateTime.now(),
       text: text,
+      messageType: ChatMessageType.text,
+    ));
+  }
+
+  addimage(File image) {
+    myMsg.add(new MyMessage(
+      name: 'ali',
+      issender: true,
+      date: DateTime.now(),
+      image: image,
+      messageType: ChatMessageType.image,
     ));
   }
 
@@ -90,13 +117,17 @@ class _ChatInputFieldState extends State<ChatInputField> {
                           child: Row(
                             children: [
                               TextButton.icon(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      getimage();
+                                      // MessagesScreen.length.value += 1;
+                                    });
+                                  },
                                   icon: Icon(Icons.open_in_browser),
                                   label: Text('Browse')),
                             ],
                           ),
                         ),
-                        
                       );
                     },
                   ),
@@ -113,8 +144,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
                         color: Colors.white,
                         onPressed: () {
                           print(_controller.text);
-                          print(MessagesScreen.length.value += 1);
-                          count++;
+                          MessagesScreen.length.value += 1;
                           setState(() {
                             addmsg(_controller.text);
                             _controller.clear();

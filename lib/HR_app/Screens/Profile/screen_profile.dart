@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/About/screen_about.dart';
+import 'package:hr_admin/HR_app/Screens/Dependent/screen_dependent.dart';
 import 'package:hr_admin/HR_app/Screens/Education/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Education/Components/model.dart';
+import 'package:hr_admin/HR_app/Screens/Education/screen_education.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/model.dart';
+import 'package:hr_admin/HR_app/Screens/Experience/screen_experience.dart';
+import 'package:hr_admin/HR_app/Screens/Personal_Information/screen_personal_info.dart';
+import 'package:hr_admin/HR_app/Screens/Skills/screens.skills.dart';
+import 'package:hr_admin/HR_app/Screens/Work_Information/screen_work_info.dart';
 import 'package:hr_admin/HR_app/Screens/top_tile.dart';
 import 'package:hr_admin/HR_app/Screens/Skills/chip_maker.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class Profile extends StatelessWidget {
+  var _next = Personal_Information();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +54,7 @@ class Profile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 20),
-                      FormTopTile(
-                        trailing_edit: true,
-                        // press: null,
-                      ),
+                      FormTopTile(trailing_edit: true, press: _next),
                     ],
                   ),
                 ),
@@ -93,20 +98,14 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => About()));
+                          }),
                     ],
                   ),
-                  // ListTile(
-                  //   leading: Text(
-                  //     'About',
-                  //     style: TextStyle(
-                  //       color: kPrimaryColor,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  //   trailing:
-                  //       IconButton(icon: Icon(Icons.edit), onPressed: () {}),
-                  // ),
                   Text(
                     'Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content',
                   ),
@@ -135,7 +134,12 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Work_Information()));
+                          }),
                     ],
                   ),
 //------------Body----------
@@ -285,7 +289,12 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Experience()));
+                          }),
                     ],
                   ),
 //------------Body-------------
@@ -329,7 +338,12 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Education()));
+                          }),
                     ],
                   ),
 //------------Body-----------
@@ -373,7 +387,12 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Skills()));
+                          }),
                     ],
                   ),
 //------------Body----------
@@ -421,7 +440,12 @@ class Profile extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                      IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Dependent()));
+                          }),
                     ],
                   ),
 //------------Body----------

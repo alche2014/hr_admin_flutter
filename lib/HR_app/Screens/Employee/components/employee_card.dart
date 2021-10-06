@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
+import 'package:hr_admin/HR_app/Screens/Employes/screen_employes.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class EmployeeCard extends StatelessWidget {
@@ -22,8 +23,8 @@ class EmployeeCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => model.press));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Employes()));
           },
           child: ListTile(
             leading: Material(

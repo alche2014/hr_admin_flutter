@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Messages1/components/ImageMessage.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/TextMessage.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
 import 'package:hr_admin/HR_app/constants.dart';
@@ -9,20 +10,18 @@ class Messages extends StatelessWidget {
   String data;
   @override
   Widget build(BuildContext context) {
-    // Widget messageContaint(ChatMessage message) {
-    //   switch (message.messageType) {
-    //     case ChatMessageType.text:
-    //       // return TextMessage(message: message);
-    //       break;
-    //     case ChatMessageType.audio:
-    //       return AudioMessage(message: message);
-    //     case ChatMessageType.video:
-    //       return VideoMessage(message: message);
-    //       break;
-    //     default:
-    //       return SizedBox();
-    //   }
-    // }
+    Widget messageContaint(MyMessage message) {
+      switch (message.messageType) {
+        case ChatMessageType.text:
+          return TextMessage(message: message);
+          break;
+        case ChatMessageType.image:
+          return ImageMessage(message: message);
+          break;
+        default:
+          return SizedBox();
+      }
+    }
 
     return Padding(
       padding: const EdgeInsets.only(top: kDefaultPadding),
@@ -35,10 +34,8 @@ class Messages extends StatelessWidget {
             CircleAvatar(
               backgroundImage: AssetImage('assets/images/user_2.png'),
             ),
-            TextMessage(message: message,),
-          // SizedBox(width: kDefaultPadding / 2),
-          // messageContaint(message),
-          // SizedBox(height: kDefaultPadding / 2),
+            // TextMessage(message: message,),
+          messageContaint(message),
           // if (message.issender) MessageDotStatus(message: message),
         ],
       ),

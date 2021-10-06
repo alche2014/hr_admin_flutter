@@ -151,8 +151,7 @@ class _DependentFormState extends State<DependentForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

@@ -13,13 +13,17 @@ class About extends StatelessWidget {
           children: [
             SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text(
-                'Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content Here is your about content',
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Type Here'
+                ),
+                maxLines: 5,
               ),
             ),
             SizedBox(height: 30),

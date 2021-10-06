@@ -3,7 +3,7 @@ import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/slidable_widget.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
-class Employee extends StatelessWidget {
+class Employes1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

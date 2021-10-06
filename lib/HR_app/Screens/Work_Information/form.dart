@@ -266,8 +266,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

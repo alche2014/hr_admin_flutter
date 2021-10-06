@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/employee_card.dart';
+import 'package:hr_admin/HR_app/Screens/Employes/screen_employes.dart';
 
 class SlidabldWidget extends StatelessWidget {
   SlidabldWidget({this.index, this.model});
@@ -26,11 +27,13 @@ class SlidabldWidget extends StatelessWidget {
               color: Colors.green[300],
               borderRadius: BorderRadius.circular(100),
               child: InkWell(
+                onTap: () {
+                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => ));
+                },
                 splashColor: Colors.grey,
                 radius: 30,
                 highlightColor: Colors.grey.withOpacity(0.6),
                 borderRadius: BorderRadius.circular(100),
-                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(

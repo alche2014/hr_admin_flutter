@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Employee/screen_employee.dart';
+import 'package:hr_admin/HR_app/Screens/Employes/screen_employes.dart';
+import 'package:hr_admin/HR_app/Screens/ForgetPassword/screen_forget_password.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/home1.dart';
 import 'package:hr_admin/HR_app/Screens/Messages/screen_messages.dart';
+import 'package:hr_admin/HR_app/Screens/RecoveryCode/screen_recovery_code.dart';
 import 'package:hr_admin/HR_app/Screens/Settings/screen_settings.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 
@@ -14,8 +18,8 @@ class _NavigationBarState extends State<NavigationBar> {
 
   final tabs = [
     Center(child: Home1()),
-    Center(child: Settings()),
-    Center(child: ShiftSchedule()),
+    Center(child: Employes1()),
+    Center(child: RecoveryCode()),
     Center(child: Messages()),
   ];
   @override

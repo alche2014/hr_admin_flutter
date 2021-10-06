@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CompanyInformation/company_information.dart';
+import 'package:hr_admin/HR_app/Screens/ForgetPassword/screen_forget_password.dart';
 import 'package:hr_admin/HR_app/Screens/navigationbar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
@@ -44,7 +46,6 @@ class Signin_Pg1 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Column(
                       children: [
@@ -138,7 +139,10 @@ class Signin_Pg1 extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ForgetPassword()));
+                              },
                               child: Text('Forget Password?',
                                   style: TextStyle(color: Colors.grey))),
                         ),
@@ -149,9 +153,11 @@ class Signin_Pg1 extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => CompanyInformation()));
+                            },
                             child: Text(
-                              'Signup',
+                              'SIGN UP',
                               style: TextStyle(color: kPrimaryColor),
                             ),
                           ),
@@ -171,7 +177,7 @@ class Signin_Pg1 extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(5)),
                             ),
                             child: Text(
-                              'Login',
+                              'SIGN IN',
                             ),
                           ),
                         ),

@@ -3,10 +3,6 @@ import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class FormTopTile extends StatelessWidget {
-  // FormTopTile({this.image, this.name, this.designation});
-  // String image;
-  // String name;
-  // String designation;
   bool trailing_edit;
   var press;
   FormTopTile({this.press, this.trailing_edit});
@@ -96,21 +92,21 @@ class FormTopTile extends StatelessWidget {
                 // highlightColor: kPrimaryColor,
                 // hoverColor: Colors.grey,autofocus: true,splashColor: Colors.white,
                 onTap: () {
-                  // Navigator.push(
-                  // context,
-                  // MaterialPageRoute(
-                  //     builder: (context) => press()));
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => press));
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Edit',
-                      style: TextStyle(color: kPrimaryColor),
-                    ),
+                    // Text(
+                    //   'Edit',
+                    //   style: TextStyle(color: kPrimaryColor),
+                    // ),
                     Icon(
                       Icons.edit,
-                      color: kPrimaryColor,
+                      color: Colors.white,
                     )
                   ],
                 ),

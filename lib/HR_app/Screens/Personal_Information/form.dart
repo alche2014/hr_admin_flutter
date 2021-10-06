@@ -11,7 +11,8 @@ class Personal_Info_Form extends StatefulWidget {
 
 class _Personal_Info_FormState extends State<Personal_Info_Form> {
   var _gender;
-  var dropdownValue;
+  var _dropdownValue;
+  var _dropdownValue1;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -19,49 +20,49 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
         children: [
 //----------------------image-------------------
           CircularPercentIndicator(
-                radius: 87,
-                lineWidth: 3,
-                backgroundColor: Colors.white,
-                percent: 0.50,
-                progressColor: kPrimaryColor,
-                circularStrokeCap: CircularStrokeCap.round,
-                animation: true,
-                center: Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      child: ClipRRect(
-                        clipBehavior: Clip.antiAlias,
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image(
-                          image: AssetImage('assets/images/user1.png'),
-                          width: 90,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+            radius: 87,
+            lineWidth: 3,
+            backgroundColor: Colors.white,
+            percent: 0.50,
+            progressColor: kPrimaryColor,
+            circularStrokeCap: CircularStrokeCap.round,
+            animation: true,
+            center: Stack(
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  child: ClipRRect(
+                    clipBehavior: Clip.antiAlias,
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image(
+                      image: AssetImage('assets/images/user1.png'),
+                      width: 90,
+                      fit: BoxFit.cover,
                     ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Image(
-                        image: AssetImage('assets/images/Vector.png'),
-                        width: 20,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 3,
-                      right: 3,
-                      child: Icon(
-                        Icons.edit_outlined,
-                        size: 15,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-        SizedBox(height: 30),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Image(
+                    image: AssetImage('assets/images/Vector.png'),
+                    width: 20,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  bottom: 3,
+                  right: 3,
+                  child: Icon(
+                    Icons.edit_outlined,
+                    size: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
 //------------------textfields--------------------
           TextFormField(
             decoration: InputDecoration(
@@ -154,7 +155,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 border: Border.all(color: Colors.grey, width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -165,7 +166,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -229,7 +230,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 border: Border.all(color: Colors.grey, width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue1,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -240,7 +241,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue1 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -359,6 +360,39 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           SizedBox(height: 10),
           TextFormField(
             decoration: InputDecoration(
+              hintText: 'Bank No',
+              hintStyle: TextStyle(color: Colors.grey),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.grey, width: 1),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.grey, width: 1),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  width: 1,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (value) {
+              if (value.isEmpty) {
+                return null;
+              } else if (value.contains(' ')) {
+                return 'Password can not contain blank Spaces';
+              } else if (value.length < 4) {
+                return 'Enter atleast 4 characters';
+              } else
+                return null;
+            },
+          ),
+          SizedBox(height: 10),
+          TextFormField(
+            decoration: InputDecoration(
               hintText: 'CNIC',
               hintStyle: TextStyle(color: Colors.grey),
               focusedBorder: OutlineInputBorder(
@@ -428,8 +462,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

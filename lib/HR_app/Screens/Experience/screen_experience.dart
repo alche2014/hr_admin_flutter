@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/AddExperience/screen_add_experience.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/model.dart';
@@ -22,7 +23,6 @@ class _ExperienceState extends State<Experience> {
         itemBuilder: (_, index) {
           return Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-           
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Theme.of(context).scaffoldBackgroundColor,
@@ -37,7 +37,8 @@ class _ExperienceState extends State<Experience> {
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddExperience()));
         },
         child: const Icon(
           Icons.add,

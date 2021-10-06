@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/AddEducation/screen_add_education.dart';
 import 'package:hr_admin/HR_app/Screens/Education/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Education/Components/model.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
@@ -35,7 +36,7 @@ class _EducationState extends State<Education> {
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddEducation()));
         },
         child: const Icon(
           Icons.add,

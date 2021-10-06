@@ -16,12 +16,8 @@ class Body extends StatelessWidget with ChangeNotifier {
               child: GroupedListView<MyMessage, DateTime>(
                 floatingHeader: true,
                 elements: myMsg,
-                // groupBy: (object) => object.date,
                  groupBy: (MyMessage element) => DateTime(
                       element.date.year, element.date.month, element.date.day),
-                // groupComparator: (value1, value2) => value2.compareTo(value1),
-                // itemComparator: (item1, item2) =>
-                //     item1.name.compareTo(item2.name),
                 reverse: true,
                 order: GroupedListOrder.DESC,
                 useStickyGroupSeparators: true,
@@ -47,32 +43,12 @@ class Body extends StatelessWidget with ChangeNotifier {
                   ),
                 itemBuilder: (c, element) {
                   return Container(
-                      // elevation: 8.0,
-                      // margin:
-                      //     EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
                       child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Messages(message: element),
                   ));
-                  //   child: Container(
-                  //     child: ListTile(
-                  //       contentPadding: EdgeInsets.symmetric(
-                  //           horizontal: 20.0, vertical: 10.0),
-                  //       leading: Icon(Icons.account_circle),
-                  //       title: Text(element.name),
-                  //       subtitle: Text(element.text),
-                  //       trailing: Icon(Icons.arrow_forward),
-                  //     ),
-                  //   ),
-                  // );
                 },
               ),
-              // ListView.builder(
-              //   itemCount: demeChatMessages.length,
-              //   itemBuilder: (context, index) => Message(
-              //     message: demeChatMessages[index],
-              //   ),
-              // ),
             ),
             ChatInputField()
           ],
