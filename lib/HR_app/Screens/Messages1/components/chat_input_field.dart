@@ -68,49 +68,75 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       onChanged: (value) {
                         setState(() {
                           if (value.isEmpty) istyping = false;
-                        if (value.isNotEmpty) istyping = true;
+                          if (value.isNotEmpty) istyping = true;
                         });
-                        
                       },
                     ),
                   ),
-                  Icon(
-                    Icons.attach_file,
-                    color: Theme.of(context)
-                        .textTheme
-                        .bodyText1
-                        .color
-                        .withOpacity(0.64),
-                  ),
-                  SizedBox(width: kDefaultPadding / 4),
-                  if (istyping == true)
-                    IconButton(
-                      splashColor: kPrimaryColor,
-                      // Icons.camera_alt_outlined,
-                      icon: Icon(Icons.send),
+                  IconButton(
+                    icon: Icon(
+                      Icons.attach_file,
                       color: Theme.of(context)
                           .textTheme
                           .bodyText1
                           .color
                           .withOpacity(0.64),
-                      onPressed: () {
-                        print(_controller.text);
-                        print(MessagesScreen.length.value += 1);
-                        count++;
-                        setState(() {
-                          addmsg(_controller.text);
-                          _controller.clear();
-                          istyping = false;
-                        });
-                        print(_controller.text);
-                        print(count);
-                      },
+                    ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        constraints: BoxConstraints(minHeight: 80),
+                        context: context,
+                        builder: (context) => Container(
+                          child: Row(
+                            children: [
+                              TextButton.icon(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.open_in_browser),
+                                  label: Text('Browse')),
+                            ],
+                          ),
+                        ),
+                        
+                      );
+                    },
+                  ),
+                  SizedBox(width: kDefaultPadding / 4),
+                  if (istyping == true)
+                    Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kPrimaryColor,
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.send),
+                        color: Colors.white,
+                        onPressed: () {
+                          print(_controller.text);
+                          print(MessagesScreen.length.value += 1);
+                          count++;
+                          setState(() {
+                            addmsg(_controller.text);
+                            _controller.clear();
+                            istyping = false;
+                          });
+                          print(_controller.text);
+                          print(count);
+                        },
+                      ),
                     ),
                   if (istyping == false)
-                    IconButton(
-                      icon: Icon(Icons.mic),
-                      color: kPrimaryColor,
-                      onPressed: () {},
+                    Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kPrimaryColor,
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.mic),
+                        color: Colors.white,
+                        onPressed: () {},
+                      ),
                     ),
                 ],
               ),
