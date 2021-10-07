@@ -8,7 +8,7 @@ class EmployeeCard extends StatelessWidget {
   // String image ;
   // String name;
   // String designation;
-  MyEmployee model;
+  final MyEmployee model;
 
   @override
   Widget build(BuildContext context) {

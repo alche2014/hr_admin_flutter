@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/AddExperience/screen_add_experience.dart';
-import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Experience/Components/model.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';

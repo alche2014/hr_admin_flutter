@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class RequestsCard extends StatefulWidget {
   RequestsCard({this.model});
-  MyRequests model;
+  final MyRequests model;
 
   @override
   _RequestsCardState createState() => _RequestsCardState();

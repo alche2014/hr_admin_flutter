@@ -4,7 +4,7 @@ import 'package:hr_admin/HR_app/Screens/ShiftSchedual/Components/model.dart';
 class ShiftScheduleCard extends StatelessWidget {
   ShiftScheduleCard({this.model});
 
-  MyShiftSchedule model;
+  final MyShiftSchedule model;
   @override
   Widget build(BuildContext context) {
     return Container(

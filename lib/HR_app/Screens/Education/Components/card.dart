@@ -3,7 +3,7 @@ import 'package:hr_admin/HR_app/Screens/Education/Components/model.dart';
 
 class EducationCard extends StatelessWidget {
   EducationCard({this.model});
-  MyEducation model;
+  final MyEducation model;
 
   @override
   Widget build(BuildContext context) {

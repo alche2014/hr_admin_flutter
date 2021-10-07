@@ -3,10 +3,10 @@ import 'package:hr_admin/HR_app/constants.dart';
 
 class Work_Info_Form extends StatefulWidget {
   @override
-  _Work_Info_FormState createState() => _Work_Info_FormState();
+  Work_Info_FormState createState() => Work_Info_FormState();
 }
 
-class _Work_Info_FormState extends State<Work_Info_Form> {
+class Work_Info_FormState extends State<Work_Info_Form> {
   var dropdownValue;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Department';
               } else {
                 return null;
               }
@@ -69,7 +69,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Designation';
               } else {
                 return null;
               }
@@ -78,7 +78,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
           SizedBox(height: 10),
           TextFormField(
             decoration: InputDecoration(
-              hintText: 'Roll',
+              hintText: 'Role',
               hintStyle: TextStyle(color: Colors.grey),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -100,7 +100,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Role';
               } else {
                 return null;
               }
@@ -190,18 +190,8 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
-              if (value.isEmpty) {
-                return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
-                return null;
-              }
-            },
+            keyboardType: TextInputType.phone,
+            inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           //----------------------Date picker----------------------------
@@ -247,18 +237,7 @@ class _Work_Info_FormState extends State<Work_Info_Form> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
-              if (value.isEmpty) {
-                return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
-                return null;
-              }
-            },
+            
           ),
           SizedBox(height: 30),
 //--------------------Save button---------------------

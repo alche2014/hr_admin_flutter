@@ -3,7 +3,7 @@ import 'package:hr_admin/HR_app/Screens/Experience/Components/model.dart';
 
 class ExperienceCard extends StatelessWidget {
   ExperienceCard({this.model});
-  MyExperience model;
+  final MyExperience model;
 
   @override
   Widget build(BuildContext context) {

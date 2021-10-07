@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class MyEmployee {
   MyEmployee({this.name, this.designation, this.image});

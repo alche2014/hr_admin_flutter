@@ -469,8 +469,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.of(context)
-                    //     .push(MaterialPageRoute(builder: (context) => Nav()));
+                    Navigator.pop(context);
                   },
                   child: Text(
                     'Save Policy',

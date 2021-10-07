@@ -166,15 +166,14 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
               if (value.isEmpty) {
                 return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
+              } else if (value.contains(' ')) {
+                return 'Password can not contain blank Spaces';
+              } else if (value.length < 4) {
+                return 'Enter atleast 4 characters';
+              } else
                 return null;
-              }
             },
           ),
           SizedBox(height: 10),
@@ -267,14 +266,19 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
+              final pattern =
+                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+              final regExp = RegExp(pattern);
+
               if (value.isEmpty) {
                 return null;
               } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
+                return 'can not have blank spaces';
+              } else if (!regExp.hasMatch(value)) {
+                return 'Enter a valid email';
+              } else {
                 return null;
+              }
             },
           ),
           SizedBox(height: 10),
@@ -295,24 +299,11 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-              final regExp = RegExp(pattern);
-
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
-              } else {
-                return null;
-              }
-            },
+            keyboardType: TextInputType.phone,
+            inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
+          //
           Row(
             children: <Widget>[
               Row(
@@ -358,8 +349,7 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

@@ -6,6 +6,7 @@ class CompanyInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
@@ -37,31 +38,47 @@ class CompanyInformation extends StatelessWidget {
             ),
           ),
 //------------------body-----------------------
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                  ),
-//-------------------image------------------
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundColor: Colors.transparent,
-                    child: Image(image: AssetImage('assets/images/Frame.png')),
-                  ),
-                  SizedBox(height: 10),
-                  Text('Company Informtion'),
-                  Text('(Help us setup your account)'),
-                  SizedBox(height: 40),
-//-----------------------Textfields----------------------
-                  FormCompanyInfo(),
-                ],
-              ),
-            ),
-          ),
+          Body(),
         ],
+      ),
+    );
+  }
+}
+
+
+
+class Body extends StatelessWidget {
+  const Body({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+              ),
+      //-------------------image------------------
+              CircleAvatar(
+                radius: 80,
+                backgroundColor: Colors.transparent,
+                child: Image(image: AssetImage('assets/images/Frame.png')),
+              ),
+              SizedBox(height: 10),
+              Text('Company Informtion'),
+              Text('(Help us setup your account)'),
+              SizedBox(height: 40),
+      //-----------------------Textfields----------------------
+              FormCompanyInfo(),
+            ],
+          ),
+        ),
       ),
     );
   }

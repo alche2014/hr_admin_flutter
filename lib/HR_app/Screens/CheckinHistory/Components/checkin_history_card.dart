@@ -15,7 +15,7 @@ class CheckinHistoryCard extends StatelessWidget {
   // String checkoutTime;
   // String date;
   // String tTime;
-  MyCheckinHistory model;
+  final MyCheckinHistory model;
 
   @override
   Widget build(BuildContext context) {

@@ -13,6 +13,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: app_bar(titilee: 'Create Announcemet'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -215,8 +216,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => Signin_scaffold()));
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,

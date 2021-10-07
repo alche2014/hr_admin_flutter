@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hr_admin/HR_app/Screens/Pg1_Signin.dart';
 import 'package:hr_admin/HR_app/Screens/navigationbar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
@@ -9,6 +8,7 @@ class FormCompanyInfo extends StatefulWidget {
 }
 
 class _FormCompanyInfoState extends State<FormCompanyInfo> {
+  
   String dropdownValue;
   @override
   Widget build(BuildContext context) {
@@ -35,16 +35,12 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
               final regExp = RegExp(pattern);
-
               if (value.isEmpty) {
                 return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
+                return 'Enter a Valid Name';
               } else {
                 return null;
               }
@@ -74,14 +70,15 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
+              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
+              final regExp = RegExp(pattern);
               if (value.isEmpty) {
                 return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
+              } else if (!regExp.hasMatch(value)) {
+                return 'Enter a Valid Name';
+              } else {
                 return null;
+              }
             },
           ),
           SizedBox(height: 10),
@@ -102,22 +99,8 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-              final regExp = RegExp(pattern);
-
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
-              } else {
-                return null;
-              }
-            },
+            keyboardType: TextInputType.phone,
+            inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
 //-----------------------DropDown-------------------
@@ -125,8 +108,7 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)
-                ),
+                border: Border.all(color: Colors.grey, width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: dropdownValue,
@@ -159,8 +141,7 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)
-                ),
+                border: Border.all(color: Colors.grey, width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: dropdownValue,
@@ -169,7 +150,7 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
                 elevation: 0,
                 isExpanded: true,
                 hint: Text(
-                  'Industry',
+                  'Time Zone',
                   style: TextStyle(color: Colors.grey),
                 ),
                 onChanged: (String newValue) {
@@ -194,8 +175,8 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NavigationBar()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => NavigationBar()));
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

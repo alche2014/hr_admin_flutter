@@ -9,7 +9,7 @@ class AddEducationForm extends StatefulWidget {
 class _AddEducationFormState extends State<AddEducationForm> {
   var dropdownValue;
   var dropdownValue2;
-  bool _iscchecked = false;
+  // bool _iscchecked = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -38,18 +38,6 @@ class _AddEducationFormState extends State<AddEducationForm> {
                     borderSide: BorderSide(width: 1, color: Colors.grey),
                   ),
                 ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                  final regExp = RegExp(pattern);
-                  if (value.isEmpty) {
-                    return null;
-                  } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a Valid Name';
-                  } else {
-                    return null;
-                  }
-                },
               ),
               SizedBox(height: 10),
               //-----------------------DropDown-------------------
@@ -111,7 +99,7 @@ class _AddEducationFormState extends State<AddEducationForm> {
                   if (value.isEmpty) {
                     return null;
                   } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a Valid Name';
+                    return 'Enter a Valid Field';
                   } else {
                     return null;
                   }
@@ -193,18 +181,6 @@ class _AddEducationFormState extends State<AddEducationForm> {
                     borderSide: BorderSide(width: 1, color: Colors.grey),
                   ),
                 ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                  final regExp = RegExp(pattern);
-                  if (value.isEmpty) {
-                    return null;
-                  } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a Valid Name';
-                  } else {
-                    return null;
-                  }
-                },
               ),
               SizedBox(height: 10),
               TextFormField(
@@ -231,7 +207,7 @@ class _AddEducationFormState extends State<AddEducationForm> {
                   if (value.isEmpty) {
                     return null;
                   } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a Valid Name';
+                    return 'InValid';
                   } else {
                     return null;
                   }
@@ -257,22 +233,10 @@ class _AddEducationFormState extends State<AddEducationForm> {
                     borderSide: BorderSide(width: 1, color: Colors.grey),
                   ),
                 ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                  final regExp = RegExp(pattern);
-                  if (value.isEmpty) {
-                    return null;
-                  } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a Valid Name';
-                  } else {
-                    return null;
-                  }
-                },
               ),
             ],
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 50),
           //--------------------Save button---------------------
           FractionallySizedBox(
             widthFactor: 1,

@@ -6,6 +6,7 @@ import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:intl/intl.dart';
 
+// ignore: must_be_immutable
 class Body extends StatelessWidget with ChangeNotifier {
   
   @override

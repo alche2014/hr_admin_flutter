@@ -1,9 +1,7 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/cards.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/charts.dart';
 import 'package:hr_admin/HR_app/constants.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Home1 extends StatefulWidget {
   @override

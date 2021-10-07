@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Announcemets/Components/model.dart';
-import 'package:hr_admin/HR_app/constants.dart';
 import 'package:intl/intl.dart';
 
 class AnnouncementCard extends StatelessWidget {
   AnnouncementCard({this.model, this.fulltext});
   MyAnnouncement model;
-  // String text1;
-  // String text2;
   bool fulltext;
-  // DateTime date;
   @override
   Widget build(BuildContext context) {
     return Padding(

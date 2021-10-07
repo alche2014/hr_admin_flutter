@@ -4,7 +4,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class LinearBar extends StatelessWidget {
   LinearBar(this.title);
-  String title;
+  final String title;
 
   @override
   Widget build(BuildContext context) {

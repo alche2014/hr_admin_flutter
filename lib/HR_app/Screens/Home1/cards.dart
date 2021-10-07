@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Card1_Home1 extends StatelessWidget {
   Card1_Home1({this.text1, this.text2, this.color});
   String text1;

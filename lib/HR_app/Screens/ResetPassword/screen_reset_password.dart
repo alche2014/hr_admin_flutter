@@ -4,9 +4,11 @@ import 'package:hr_admin/HR_app/Screens/Pg1_Signin.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class ResetYourPassword extends StatelessWidget {
+  TextEditingController _controler1 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -37,7 +39,6 @@ class ResetYourPassword extends StatelessWidget {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: SingleChildScrollView(
               child: Container(
-                
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
@@ -48,7 +49,8 @@ class ResetYourPassword extends StatelessWidget {
                     CircleAvatar(
                       radius: 100,
                       backgroundColor: Colors.transparent,
-                      child: Image(image: AssetImage('assets/images/Frame.png')),
+                      child:
+                          Image(image: AssetImage('assets/images/Frame.png')),
                     ),
                     SizedBox(
                       height: 60,
@@ -70,6 +72,7 @@ class ResetYourPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     TextFormField(
+                      controller: _controler1,
                       decoration: InputDecoration(
                         hintText: 'Create Password',
                         hintStyle: TextStyle(color: Colors.grey),
@@ -88,15 +91,14 @@ class ResetYourPassword extends StatelessWidget {
                       ),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
-                        final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                        final regExp = RegExp(pattern);
                         if (value.isEmpty) {
                           return null;
-                        } else if (!regExp.hasMatch(value)) {
-                          return 'Enter a Valid Name';
-                        } else {
+                        } else if (value.contains(' ')) {
+                          return 'Password can not contain blank Spaces';
+                        } else if (value.length < 4) {
+                          return 'Enter atleast 4 characters';
+                        } else
                           return null;
-                        }
                       },
                     ),
                     SizedBox(height: 10),
@@ -119,15 +121,12 @@ class ResetYourPassword extends StatelessWidget {
                       ),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
-                        final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                        final regExp = RegExp(pattern);
                         if (value.isEmpty) {
                           return null;
-                        } else if (!regExp.hasMatch(value)) {
-                          return 'Enter a Valid Name';
-                        } else {
+                        } else if (value != _controler1.text) {
+                          return 'Enter same Password';
+                        } else
                           return null;
-                        }
                       },
                     ),
                     SizedBox(height: 30),

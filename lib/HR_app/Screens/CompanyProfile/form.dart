@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Profile/screen_profile.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -387,14 +388,22 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             },
           ),
 
+          SizedBox(height: 10),
+          //----------------------Map-----------------------
+          Container(
+            height: 230,
+            child: Image.asset(
+              'assets/images/map.png',
+              fit: BoxFit.cover,
+            ),
+          ),
           SizedBox(height: 30),
           //----------------Save button--------------------------
           FractionallySizedBox(
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Signin_scaffold()));
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

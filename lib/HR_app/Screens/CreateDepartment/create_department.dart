@@ -117,8 +117,7 @@ class CreateDepartment extends StatelessWidget {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => Signin_scaffold()));
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,
@@ -129,7 +128,7 @@ class CreateDepartment extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5)),
                 ),
                 child: Text(
-                  'Save',
+                  'SAVE DEPARTMENT',
                 ),
               ),
             ),

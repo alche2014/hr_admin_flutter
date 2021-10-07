@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kPrimaryColor = Color(0xFFC53B4B);
@@ -20,3 +21,5 @@ Future<String> getdata(String key) async {
   return preferences.getString(key) ?? "";
   // return data;
 }
+var phonemask = new MaskTextInputFormatter(mask: '+92 ### #######');
+var cnicemask = new MaskTextInputFormatter(mask: '#####-#######-#');

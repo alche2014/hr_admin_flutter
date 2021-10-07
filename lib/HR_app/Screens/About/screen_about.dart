@@ -20,9 +20,7 @@ class About extends StatelessWidget {
               ),
               child: TextField(
                 decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Type Here'
-                ),
+                    border: InputBorder.none, hintText: 'Type Here'),
                 maxLines: 5,
               ),
             ),
@@ -32,8 +30,7 @@ class About extends StatelessWidget {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => Signin_scaffold()));
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,

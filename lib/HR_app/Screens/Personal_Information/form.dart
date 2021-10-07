@@ -4,11 +4,13 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 enum Gender { Male, Female, Both }
 
+// ignore: camel_case_types
 class Personal_Info_Form extends StatefulWidget {
   @override
   _Personal_Info_FormState createState() => _Personal_Info_FormState();
 }
 
+// ignore: camel_case_types
 class _Personal_Info_FormState extends State<Personal_Info_Form> {
   var _gender;
   var _dropdownValue;
@@ -116,12 +118,16 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
+              final pattern =
+                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
               final regExp = RegExp(pattern);
+
               if (value.isEmpty) {
                 return null;
+              } else if (value.contains(' ')) {
+                return 'can not have blank spaces';
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a valid email';
               } else {
                 return null;
               }
@@ -145,6 +151,8 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
+            keyboardType: TextInputType.phone,
+            inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           //-----------------------DropDown-------------------
@@ -277,17 +285,6 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -309,16 +306,12 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
               final regExp = RegExp(pattern);
-
               if (value.isEmpty) {
                 return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
+                return 'Enter a Valid Designation';
               } else {
                 return null;
               }
@@ -347,14 +340,15 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
+              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
+              final regExp = RegExp(pattern);
               if (value.isEmpty) {
                 return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
+              } else if (!regExp.hasMatch(value)) {
+                return 'Enter a Valid Bank Name';
+              } else {
                 return null;
+              }
             },
           ),
           SizedBox(height: 10),
@@ -378,14 +372,13 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 ),
               ),
             ),
+            keyboardType: TextInputType.number,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               if (value.isEmpty) {
                 return null;
               } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
+                return 'Bank No. can not contain blank Spaces';
               } else
                 return null;
             },
@@ -411,17 +404,8 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
+            keyboardType: TextInputType.number,
+            inputFormatters: [cnicemask],
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -449,9 +433,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
               if (value.isEmpty) {
                 return null;
               } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
+                return 'Remove spaces form start';
               } else
                 return null;
             },

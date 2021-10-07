@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CreateDepartment/create_department.dart';
+import 'package:hr_admin/HR_app/Screens/CreateEmployee/screen_create_employee.dart';
 import 'package:hr_admin/HR_app/Screens/Departments/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/Departments/Components/model.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
@@ -24,7 +26,7 @@ class Departments extends StatelessWidget {
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateDepartment()));
         },
         child: const Icon(
           Icons.add,

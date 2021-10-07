@@ -4,7 +4,7 @@ import 'package:hr_admin/HR_app/Screens/Departments/Components/model.dart';
 class DepartmentCard extends StatelessWidget {
   DepartmentCard({this.model});
 
-  MyDepartment model;
+  final MyDepartment model;
   @override
   Widget build(BuildContext context) {
     return Container(

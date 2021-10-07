@@ -4,7 +4,7 @@ import 'package:hr_admin/HR_app/Screens/OfficeLocation/Components/model.dart';
 
 class OfficeLocationCard extends StatelessWidget {
   OfficeLocationCard({this.model});
-  MyOfficeLocation model;
+  final MyOfficeLocation model;
   @override
   Widget build(BuildContext context) {
     return Container(

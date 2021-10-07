@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/employee_card.dart';
-import 'package:hr_admin/HR_app/Screens/Employes/screen_employes.dart';
 
+// ignore: must_be_immutable
 class SlidabldWidget extends StatelessWidget {
   SlidabldWidget({this.index, this.model});
   var index;

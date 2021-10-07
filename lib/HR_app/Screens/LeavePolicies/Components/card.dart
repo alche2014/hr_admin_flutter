@@ -4,7 +4,7 @@ import 'package:hr_admin/HR_app/Screens/LeavePolicies/Components/model.dart';
 class PolicyCard extends StatelessWidget {
   PolicyCard({this.model});
 
-  MyPolicy model;
+  final MyPolicy model;
   @override
   Widget build(BuildContext context) {
     return Container(

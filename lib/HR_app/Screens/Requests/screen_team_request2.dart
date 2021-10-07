@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 class TeamRequest2 extends StatelessWidget {
   TeamRequest2({this.model});
-  MyRequests model;
+  final MyRequests model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ class TeamRequest2Card extends StatelessWidget {
   // String name;
   // String image;
   // String status;
-  MyRequests model;
+  final MyRequests model;
 
   TeamRequest2Card({this.model});
 

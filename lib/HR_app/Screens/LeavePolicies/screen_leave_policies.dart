@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CreateLeavePolicy/screen_create_leave_policy.dart';
 import 'package:hr_admin/HR_app/Screens/LeavePolicies/Components/card.dart';
 import 'package:hr_admin/HR_app/Screens/LeavePolicies/Components/model.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
@@ -23,7 +24,8 @@ class LeavePolicies extends StatelessWidget {
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => CreateLeavePolicy()));
         },
         child: const Icon(
           Icons.add,

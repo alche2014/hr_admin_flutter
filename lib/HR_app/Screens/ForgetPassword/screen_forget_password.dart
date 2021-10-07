@@ -103,7 +103,10 @@ class ForgetPassword extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(top: 40, left: 40, right: 40),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => RecoveryCode()));
+                      },
                       child: ListTile(
                         // contentPadding: EdgeInsets.only(top: 40, left: 40),
                         leading: Icon(

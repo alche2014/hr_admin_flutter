@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CompanyProfile/screen_company_profile.dart';
+import 'package:hr_admin/HR_app/Screens/Departments/screen_departmennts.dart';
+import 'package:hr_admin/HR_app/Screens/LeavePolicies/screen_leave_policies.dart';
+import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.dart';
+import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class Body extends StatefulWidget {
@@ -125,7 +130,10 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(width: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Company_Profile()));
+                        },
                         child: Text(
                           'Company Profile',
                           style: TextStyle(color: Colors.grey),
@@ -142,7 +150,10 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(width: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Departments()));
+                        },
                         child: Text(
                           'Department',
                           style: TextStyle(color: Colors.grey),
@@ -159,7 +170,10 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(width: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => OfficeLocation()));
+                        },
                         child: Text(
                           'Office Locations',
                           style: TextStyle(color: Colors.grey),
@@ -176,7 +190,10 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(width: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ShiftSchedule()));
+                        },
                         child: Text(
                           'Shift Schedule',
                           style: TextStyle(color: Colors.grey),
@@ -193,7 +210,10 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(width: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LeavePolicies()));
+                        },
                         child: Text(
                           'Leave Policy',
                           style: TextStyle(color: Colors.grey),

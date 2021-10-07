@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/About/screen_about.dart';
 import 'package:hr_admin/HR_app/Screens/Dependent/screen_dependent.dart';

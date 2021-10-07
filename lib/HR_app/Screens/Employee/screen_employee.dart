@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/CreateEmployee/screen_create_employee.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/slidable_widget.dart';
 import 'package:hr_admin/HR_app/constants.dart';
@@ -108,7 +109,8 @@ class Employes1 extends StatelessWidget {
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => CreateEmployee()));
         },
         child: const Icon(
           Icons.add,

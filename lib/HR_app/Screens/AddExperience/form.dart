@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hr_admin/HR_app/Screens/Profile/screen_profile.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class AddExpressionForm extends StatefulWidget {
@@ -41,7 +40,7 @@ class _AddExpressionFormState extends State<AddExpressionForm> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Title';
               } else {
                 return null;
               }
@@ -107,7 +106,7 @@ class _AddExpressionFormState extends State<AddExpressionForm> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Company Name';
               } else {
                 return null;
               }
@@ -132,18 +131,7 @@ class _AddExpressionFormState extends State<AddExpressionForm> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
-              if (value.isEmpty) {
-                return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
-                return null;
-              }
-            },
+          
           ),
           SizedBox(height: 10),
           //---------------------checkBox--------------------
@@ -257,7 +245,7 @@ class _AddExpressionFormState extends State<AddExpressionForm> {
               if (value.isEmpty) {
                 return null;
               } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
+                return 'Enter a Valid Head Line';
               } else {
                 return null;
               }
@@ -317,18 +305,7 @@ class _AddExpressionFormState extends State<AddExpressionForm> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
-              if (value.isEmpty) {
-                return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
-                return null;
-              }
-            },
+            
           ),
           SizedBox(height: 30),
           //--------------------Save button---------------------
