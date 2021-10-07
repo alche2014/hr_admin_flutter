@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hr_admin/HR_app/Screens/Profile/screen_profile.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -80,18 +79,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 borderSide: BorderSide(width: 1, color: Colors.grey),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-              final regExp = RegExp(pattern);
-              if (value.isEmpty) {
-                return null;
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a Valid Name';
-              } else {
-                return null;
-              }
-            },
+           
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -202,17 +190,8 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
+            keyboardType: TextInputType.phone,
+            inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -233,21 +212,21 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
               ),
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              final pattern =
-                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-              final regExp = RegExp(pattern);
+                validator: (value) {
+                  final pattern =
+                      (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+                  final regExp = RegExp(pattern);
 
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'can not have blank spaces';
-              } else if (!regExp.hasMatch(value)) {
-                return 'Enter a valid email';
-              } else {
-                return null;
-              }
-            },
+                  if (value.isEmpty) {
+                    return null;
+                  } else if (value.contains(' ')) {
+                    return 'can not have blank spaces';
+                  } else if (!regExp.hasMatch(value)) {
+                    return 'Enter a valid email';
+                  } else {
+                    return null;
+                  }
+                },
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -270,17 +249,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
+            
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -303,17 +272,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
+           
           ),
           SizedBox(height: 10),
           //----------------------Dropdown3----------------------------
@@ -375,17 +334,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
               ),
             ),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value.isEmpty) {
-                return null;
-              } else if (value.contains(' ')) {
-                return 'Password can not contain blank Spaces';
-              } else if (value.length < 4) {
-                return 'Enter atleast 4 characters';
-              } else
-                return null;
-            },
+           
           ),
 
           SizedBox(height: 10),

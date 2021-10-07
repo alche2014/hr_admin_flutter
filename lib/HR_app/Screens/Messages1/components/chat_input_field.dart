@@ -113,10 +113,12 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       showModalBottomSheet(
                         constraints: BoxConstraints(minHeight: 80),
                         context: context,
-                        builder: (context) => Container(
-                          child: Row(
-                            children: [
-                              TextButton.icon(
+                        builder: (context) => Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: TextButton.icon(
                                   onPressed: () {
                                     setState(() {
                                       getimage();
@@ -125,8 +127,8 @@ class _ChatInputFieldState extends State<ChatInputField> {
                                   },
                                   icon: Icon(Icons.open_in_browser),
                                   label: Text('Browse')),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       );
                     },

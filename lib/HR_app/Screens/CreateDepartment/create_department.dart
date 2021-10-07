@@ -35,18 +35,6 @@ class CreateDepartment extends StatelessWidget {
                       borderSide: BorderSide(width: 1, color: Colors.grey),
                     ),
                   ),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                    final regExp = RegExp(pattern);
-                    if (value.isEmpty) {
-                      return null;
-                    } else if (!regExp.hasMatch(value)) {
-                      return 'Enter a Valid Name';
-                    } else {
-                      return null;
-                    }
-                  },
                 ),
                 SizedBox(height: 10),
                 TextFormField(
@@ -66,18 +54,6 @@ class CreateDepartment extends StatelessWidget {
                       borderSide: BorderSide(width: 1, color: Colors.grey),
                     ),
                   ),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                    final regExp = RegExp(pattern);
-                    if (value.isEmpty) {
-                      return null;
-                    } else if (!regExp.hasMatch(value)) {
-                      return 'Enter a Valid Name';
-                    } else {
-                      return null;
-                    }
-                  },
                 ),
                 SizedBox(height: 10),
                 TextFormField(

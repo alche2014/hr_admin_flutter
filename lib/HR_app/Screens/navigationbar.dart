@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Announcemets/screen_announcement.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/screen_employee.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/home1.dart';
+import 'package:hr_admin/HR_app/Screens/Messages/screen_messages.dart';
 import 'package:hr_admin/HR_app/Screens/Settings/screen_settings.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -16,6 +17,7 @@ class _NavigationBarState extends State<NavigationBar> {
     Center(child: Home1()),
     Center(child: Employes1()),
     Center(child: Announcements()),
+    Center(child: Messages()),
     Center(child: Settings()),
   ];
   @override
@@ -41,7 +43,12 @@ class _NavigationBarState extends State<NavigationBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_add_alt_1),
-            label: 'Requests',
+            label: 'Announcement',
+            // backgroundColor: Colors.blue,
+          ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.message_outlined),
+            label: 'Messages',
             // backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
