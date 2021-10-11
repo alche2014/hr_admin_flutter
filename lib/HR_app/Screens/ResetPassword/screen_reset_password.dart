@@ -74,6 +74,7 @@ class ResetYourPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
                       style: TextFieldTextStyle(),
                       controller: _controller1,
                       decoration: TextFieldDecoration('Create Password'),

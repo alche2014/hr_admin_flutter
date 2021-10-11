@@ -8,6 +8,10 @@ class CreateLocation extends StatefulWidget {
 }
 
 class _CreateLocationState extends State<CreateLocation> {
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +31,12 @@ class _CreateLocationState extends State<CreateLocation> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   //--------------------textfield-----------------------------
+
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Location Name',
-                      hintStyle: TextStyle(color: Colors.grey),
-                      // filled: true,
-                      // fillColor: Colors.white,
-                      fillColor: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kPrimaryColor.withOpacity(0.1)
-                          : kContentColorLightTheme.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                    ),
+                    textInputAction: TextInputAction.next,
+                    controller: _controller1,
+                    style: TextFieldTextStyle(),
+                    decoration: TextFieldDecoration('Location Name'),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -66,26 +53,27 @@ class _CreateLocationState extends State<CreateLocation> {
                   SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
+                      // labelStyle: TextStyle(fontSize: 20),
+
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                       hintText: 'Address',
-                      suffixIcon: Icon(Icons.location_pin, color: kPrimaryColor,),
+                      suffixIcon: Icon(Icons.location_pin, color: kPrimaryColor),
                       hintStyle: TextStyle(color: Colors.grey),
-                      // filled: true,
-                      // fillColor: Colors.white,
-                      fillColor: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kPrimaryColor.withOpacity(0.1)
-                          : kContentColorLightTheme.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.grey[300]),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            BorderSide(color: Colors.grey[300], width: 1),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.grey[300]),
                       ),
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -102,7 +90,7 @@ class _CreateLocationState extends State<CreateLocation> {
                     },
                   ),
                   SizedBox(height: 20),
-              //----------------------Map-----------------------
+                  //----------------------Map-----------------------
                   Container(
                     height: 230,
                     child: Image.asset(
@@ -110,31 +98,13 @@ class _CreateLocationState extends State<CreateLocation> {
                       fit: BoxFit.cover,
                     ),
                   ),
-              //-------------------textfields---------------
+                  //-------------------textfields---------------
                   SizedBox(height: 20),
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Phone',
-                      hintStyle: TextStyle(color: Colors.grey),
-                      // filled: true,
-                      // fillColor: Colors.white,
-                      fillColor: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kPrimaryColor.withOpacity(0.1)
-                          : kContentColorLightTheme.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                    ),
+                    textInputAction: TextInputAction.next,
+                    controller: _controller1,
+                    style: TextFieldTextStyle(),
+                    decoration: TextFieldDecoration('Phone'),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -150,28 +120,10 @@ class _CreateLocationState extends State<CreateLocation> {
                   ),
                   SizedBox(height: 10),
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      hintStyle: TextStyle(color: Colors.grey),
-                      // filled: true,
-                      // fillColor: Colors.white,
-                      fillColor: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kPrimaryColor.withOpacity(0.1)
-                          : kContentColorLightTheme.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                    ),
+                    textInputAction: TextInputAction.next,
+                    controller: _controller1,
+                    style: TextFieldTextStyle(),
+                    decoration: TextFieldDecoration('Email'),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');

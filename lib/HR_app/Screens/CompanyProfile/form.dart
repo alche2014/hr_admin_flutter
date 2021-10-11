@@ -8,9 +8,16 @@ class Company_Profile_Form extends StatefulWidget {
 }
 
 class _Company_Profile_FormState extends State<Company_Profile_Form> {
-  var dropdownValue1;
-  var dropdownValue2;
-  var dropdownValue3;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  TextEditingController _controller6 = new TextEditingController();
+  TextEditingController _controller7 = new TextEditingController();
+  var _dropdownValue1;
+  var _dropdownValue2;
+  var _dropdownValue3;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -63,22 +70,28 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 30),
 //------------------textfields--------------------
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Company Name'),
           ),
           SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller2,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Portal Name'),
           ),
           SizedBox(height: 10),
           //-----------------------DropDown1-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue1,
+                value: _dropdownValue1,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -89,7 +102,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue1 = newValue;
+                    _dropdownValue1 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -106,13 +119,13 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 10),
 //----------------------Dropdown2----------------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue2,
+                value: _dropdownValue2,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -123,7 +136,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue2 = newValue;
+                    _dropdownValue2 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -140,12 +153,18 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 10),
 //-------------------------Textfield--------------------------
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller3,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Mobile'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller4,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Email'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
@@ -166,22 +185,28 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller5,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Contact Person'),
           ),
           SizedBox(height: 10),
           TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller6,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Country'),
           ),
           SizedBox(height: 10),
           //----------------------Dropdown3----------------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue3,
+                value: _dropdownValue3,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -192,7 +217,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue3 = newValue;
+                    _dropdownValue3 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -209,6 +234,8 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 10),
 //-------------------textfield-----------------
           TextFormField(
+            controller: _controller7,
+            style: TextFieldTextStyle(),
             decoration: TextFieldDecoration('Address'),
           ),
 
@@ -227,7 +254,24 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                     _controller6.text.isNotEmpty &&
+                    _controller7.text.isNotEmpty &&
+                    _dropdownValue1 != null &&
+                    _dropdownValue2 != null &&
+                    _dropdownValue3 != null ) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

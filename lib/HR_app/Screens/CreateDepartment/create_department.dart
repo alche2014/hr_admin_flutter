@@ -3,6 +3,9 @@ import 'package:hr_admin/HR_app/app_bar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class CreateDepartment extends StatelessWidget {
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,60 +22,21 @@ class CreateDepartment extends StatelessWidget {
               children: [
                 //------------------textfields--------------------
                 TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Department Name',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                  ),
-                ),
+                    textInputAction: TextInputAction.next,
+                    controller: _controller1,
+                    style: TextFieldTextStyle(),
+                    decoration: TextFieldDecoration('Department Name')),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Parent Department',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                  ),
-                ),
+                    textInputAction: TextInputAction.next,
+                    controller: _controller2,
+                    style: TextFieldTextStyle(),
+                    decoration: TextFieldDecoration('Parent Department')),
                 SizedBox(height: 10),
                 TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Added By',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                  ),
+                  controller: _controller3,
+                  style: TextFieldTextStyle(),
+                  decoration: TextFieldDecoration('Added By'),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -93,12 +57,22 @@ class CreateDepartment extends StatelessWidget {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (_controller1.text.isNotEmpty &&
+                      _controller2.text.isNotEmpty &&
+                      _controller3.text.isNotEmpty) {
+                    Navigator.of(context).pop();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Complete the Form.'),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,
                   padding: EdgeInsets.symmetric(
-                    vertical: 20,
+                    vertical: 18,
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),

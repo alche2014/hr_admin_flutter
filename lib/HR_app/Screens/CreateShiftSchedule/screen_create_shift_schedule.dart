@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:intl/intl.dart';
 
 enum LateMark { AsShiftStart, AfterGraceTime }
 
@@ -10,9 +11,13 @@ class CreateShiftSchedule extends StatefulWidget {
 }
 
 class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
-  var dropdownValue;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  var _dropdownValue;
   var _iscchecked = false;
-  var _gender;
+  var _latemark;
+  var _date1;
+  var _date2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,18 +36,21 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                 children: [
                   //------------------textfields--------------------
                   TextFormField(
+                    textInputAction: TextInputAction.next,
+                    controller: _controller1,
+                    style: TextFieldTextStyle(),
                     decoration: TextFieldDecoration('Shift Name'),
                   ),
                   SizedBox(height: 10),
                   //-----------------------DropDown-------------------
                   Container(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                         border: Border.all(color: Colors.grey[300], width: 1)),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                        value: dropdownValue,
+                        value: _dropdownValue,
                         style: TextStyle(color: Colors.black),
                         icon: const Icon(Icons.keyboard_arrow_down),
                         elevation: 0,
@@ -53,7 +61,7 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            dropdownValue = newValue;
+                            _dropdownValue = newValue;
                           });
                         },
                         items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -85,7 +93,8 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                             // contentPadding: null,
                             title: Text(
                               'Grace Period',
-                              style: TextStyle(color: Colors.grey),
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 14),
                             ),
                             value: _iscchecked,
                             activeColor: kPrimaryColor,
@@ -103,6 +112,9 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                       //------------------textfields--------------------
                       Flexible(
                         child: TextFormField(
+                          textInputAction: TextInputAction.next,
+                          controller: _controller2,
+                          style: TextFieldTextStyle(),
                           decoration: TextFieldDecoration('Min'),
                         ),
                       ),
@@ -122,16 +134,19 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                           Radio<LateMark>(
                             activeColor: kPrimaryColor,
                             value: LateMark.AsShiftStart,
-                            groupValue: _gender,
+                            groupValue: _latemark,
                             onChanged: (LateMark value) {
                               setState(
                                 () {
-                                  _gender = value;
+                                  _latemark = value;
                                 },
                               );
                             },
                           ),
-                          Text('As Shift Start'),
+                          Text(
+                            'As Shift Start',
+                            style: TextStyle(color: Colors.grey),
+                          ),
                         ],
                       ),
                       SizedBox(width: 20),
@@ -140,18 +155,18 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                           Radio<LateMark>(
                             activeColor: kPrimaryColor,
                             value: LateMark.AfterGraceTime,
-                            groupValue: _gender,
+                            groupValue: _latemark,
                             onChanged: (LateMark value) {
                               setState(
                                 () {
-                                  _gender = value;
+                                  _latemark = value;
                                 },
                               );
                             },
                           ),
                           Text(
                             'After grace time',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: TextStyle(color: Colors.grey),
                           ),
                         ],
                       )
@@ -163,22 +178,36 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.grey, width: 1)),
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                  color: Colors.grey[300], width: 1)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Check in'),
+                              Text(
+                                _date1 != null
+                                    ? DateFormat.yMd().format(_date1).toString()
+                                    : 'Check in',
+                                style: TextStyle(
+                                    color: _date1 != null
+                                        ? Colors.black
+                                        : Colors.grey),
+                              ),
                               IconButton(
                                 icon: Icon(Icons.today),
                                 onPressed: () {
                                   showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime(2005),
-                                      firstDate: DateTime(2000),
-                                      lastDate: DateTime.now());
+                                          context: context,
+                                          initialDate: DateTime(2005),
+                                          firstDate: DateTime(2000),
+                                          lastDate: DateTime.now())
+                                      .then((value) {
+                                    setState(() {
+                                      _date1 = value;
+                                    });
+                                  });
                                 },
                               )
                             ],
@@ -190,22 +219,36 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.grey, width: 1)),
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                  color: Colors.grey[300], width: 1)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Check out'),
+                              Text(
+                                _date2 != null
+                                    ? DateFormat.yMd().format(_date2).toString()
+                                    : 'Check out',
+                                style: TextStyle(
+                                    color: _date2 != null
+                                        ? Colors.black
+                                        : Colors.grey),
+                              ),
                               IconButton(
                                 icon: Icon(Icons.today),
                                 onPressed: () {
                                   showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime(2005),
-                                      firstDate: DateTime(2000),
-                                      lastDate: DateTime.now());
+                                          context: context,
+                                          initialDate: DateTime(2005),
+                                          firstDate: DateTime(2000),
+                                          lastDate: DateTime.now())
+                                      .then((value) {
+                                    setState(() {
+                                      _date2 = value;
+                                    });
+                                  });
                                 },
                               ),
                             ],
@@ -221,7 +264,20 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                 widthFactor: 1,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    if (_controller1.text.isNotEmpty &&
+                        _controller2.text.isNotEmpty &&
+                        _dropdownValue != null &&
+                        _latemark != null &&
+                        _date1 != null &&
+                        _date2 != null) {
+                      Navigator.pop(context);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Complete the Form.'),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     primary: kPrimaryColor,

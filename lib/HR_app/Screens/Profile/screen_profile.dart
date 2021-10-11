@@ -16,6 +16,7 @@ import 'package:hr_admin/HR_app/Screens/top_tile.dart';
 import 'package:hr_admin/HR_app/Screens/Skills/chip_maker.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
+
 class Profile extends StatelessWidget {
   var _next = Personal_Information();
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:intl/intl.dart';
 
 class CreateAnnouncement extends StatefulWidget {
   @override
@@ -8,8 +9,12 @@ class CreateAnnouncement extends StatefulWidget {
 }
 
 class _CreateAnnouncementState extends State<CreateAnnouncement> {
-  var dropdownValue1;
-  var dropdownValue2;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  var _dropdownValue1;
+  var _dropdownValue2;
+  var _date1;
+  var _date2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,18 +28,21 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
             Column(
               children: [
                 TextFormField(
+                  textInputAction: TextInputAction.next,
+                  controller: _controller1,
+                  style: TextFieldTextStyle(),
                   decoration: TextFieldDecoration('Tile'),
                 ),
                 SizedBox(height: 10),
                 //----------------------Dropdown1----------------------------
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(5),
                       border: Border.all(color: Colors.grey[300], width: 1)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      value: dropdownValue1,
+                      value: _dropdownValue1,
                       style: TextStyle(color: Colors.black),
                       icon: const Icon(Icons.keyboard_arrow_down),
                       elevation: 0,
@@ -45,7 +53,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                       ),
                       onChanged: (String newValue) {
                         setState(() {
-                          dropdownValue1 = newValue;
+                          _dropdownValue1 = newValue;
                         });
                       },
                       items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -62,13 +70,13 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                 SizedBox(height: 10),
                 //----------------------Dropdown2----------------------------
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(5),
                       border: Border.all(color: Colors.grey[300], width: 1)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      value: dropdownValue2,
+                      value: _dropdownValue2,
                       style: TextStyle(color: Colors.black),
                       icon: const Icon(Icons.keyboard_arrow_down),
                       elevation: 0,
@@ -79,7 +87,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                       ),
                       onChanged: (String newValue) {
                         setState(() {
-                          dropdownValue2 = newValue;
+                          _dropdownValue2 = newValue;
                         });
                       },
                       items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -99,22 +107,36 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey, width: 1)),
+                            borderRadius: BorderRadius.circular(5),
+                            border:
+                                Border.all(color: Colors.grey[300], width: 1)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Start Date'),
+                            Text(
+                              _date1 != null
+                                  ? DateFormat.yMd().format(_date1).toString()
+                                  : 'Start Date',
+                              style: TextStyle(
+                                  color: _date1 != null
+                                      ? Colors.black
+                                      : Colors.grey),
+                            ),
                             IconButton(
                               icon: Icon(Icons.today),
                               onPressed: () {
                                 showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime(2005),
-                                    firstDate: DateTime(2000),
-                                    lastDate: DateTime.now());
+                                        context: context,
+                                        initialDate: DateTime(2005),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime.now())
+                                    .then((value) {
+                                  setState(() {
+                                    _date1 = value;
+                                  });
+                                });
                               },
                             )
                           ],
@@ -126,22 +148,36 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey, width: 1)),
+                            borderRadius: BorderRadius.circular(5),
+                            border:
+                                Border.all(color: Colors.grey[300], width: 1)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('End Date'),
+                            Text(
+                              _date2 != null
+                                  ? DateFormat.yMd().format(_date2).toString()
+                                  : 'Start Date',
+                              style: TextStyle(
+                                  color: _date2 != null
+                                      ? Colors.black
+                                      : Colors.grey),
+                            ),
                             IconButton(
                               icon: Icon(Icons.today),
                               onPressed: () {
                                 showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime(2005),
-                                    firstDate: DateTime(2000),
-                                    lastDate: DateTime.now());
+                                        context: context,
+                                        initialDate: DateTime(2005),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime.now())
+                                    .then((value) {
+                                  setState(() {
+                                    _date2 = value;
+                                  });
+                                });
                               },
                             ),
                           ],
@@ -152,6 +188,8 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                 ),
                 SizedBox(height: 10),
                 TextFormField(
+                  controller: _controller2,
+                  style: TextFieldTextStyle(),
                   maxLines: 4,
                   decoration: TextFieldDecoration('Description'),
                 ),
@@ -162,7 +200,20 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (_controller1.text.isNotEmpty &&
+                      _controller2.text.isNotEmpty &&
+                      _dropdownValue1 != null &&
+                      _dropdownValue2 != null &&
+                      _date1 != null &&
+                      _date2 != null) {
+                    Navigator.of(context).pop();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Complete the Form.'),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,

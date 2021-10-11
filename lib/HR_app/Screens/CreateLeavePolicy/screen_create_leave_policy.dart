@@ -9,14 +9,19 @@ class CreateLeavePolicy extends StatefulWidget {
 }
 
 class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
-  var dropdownValue;
-  var dropdownValue2;
-  var dropdownValue3;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  var _dropdownValue1;
+  var _dropdownValue2;
+  var _dropdownValue3;
   var _gender;
   var _iscchecked = false;
-  var isSwitched1 = false;
-  var isSwitched2 = false;
-  var isSwitched3 = false;
+  var _isSwitched1 = false;
+  var _isSwitched2 = false;
+  var _isSwitched3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +34,28 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
             //------------------------textfield----------------
             children: [
               TextFormField(
+                textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
                 decoration: TextFieldDecoration('Ploicy Name'),
               ),
               SizedBox(height: 10),
               TextFormField(
+                textInputAction: TextInputAction.next,
+            controller: _controller2,
+            style: TextFieldTextStyle(),
                 decoration: TextFieldDecoration('Short Name'),
               ),
               SizedBox(height: 10),
               //------------------Drop down--------------------
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: dropdownValue,
+                    value: _dropdownValue1,
                     style: TextStyle(color: Colors.black),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     elevation: 0,
@@ -55,7 +66,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                     ),
                     onChanged: (String newValue) {
                       setState(() {
-                        dropdownValue = newValue;
+                        _dropdownValue1 = newValue;
                       });
                     },
                     items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -71,13 +82,13 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               ),
               SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: dropdownValue2,
+                    value: _dropdownValue2,
                     style: TextStyle(color: Colors.black),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     elevation: 0,
@@ -88,7 +99,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                     ),
                     onChanged: (String newValue) {
                       setState(() {
-                        dropdownValue2 = newValue;
+                        _dropdownValue2 = newValue;
                       });
                     },
                     items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -120,7 +131,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                           );
                         },
                       ),
-                      Text('Male'),
+                      Text('Male',style: TextStyle(color: Colors.grey),),
                     ],
                   ),
                   SizedBox(width: 20),
@@ -138,7 +149,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                           );
                         },
                       ),
-                      Text('Female')
+                      Text('Female', style: TextStyle(color: Colors.grey))
                     ],
                   ),
                   SizedBox(width: 20),
@@ -156,7 +167,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                           );
                         },
                       ),
-                      Text('Both')
+                      Text('Both', style: TextStyle(color: Colors.grey),)
                     ],
                   )
                 ],
@@ -164,13 +175,13 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               SizedBox(height: 10),
               //------------------DropDown----------------
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: dropdownValue3,
+                    value: _dropdownValue3,
                     style: TextStyle(color: Colors.black),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     elevation: 0,
@@ -181,7 +192,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                     ),
                     onChanged: (String newValue) {
                       setState(() {
-                        dropdownValue3 = newValue;
+                        _dropdownValue3 = newValue;
                       });
                     },
                     items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -227,15 +238,24 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               SizedBox(height: 10),
               //-------------------textfields----------------
               TextFormField(
+                textInputAction: TextInputAction.next,
+            controller: _controller3,
+            style: TextFieldTextStyle(),
                 decoration: TextFieldDecoration('Leave Quote'),
               ),
               SizedBox(height: 10),
               TextFormField(
+                textInputAction: TextInputAction.next,
+            controller: _controller4,
+            style: TextFieldTextStyle(),
                 decoration: TextFieldDecoration('Minimum Days to Apply'),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 10),
               TextFormField(
+                textInputAction: TextInputAction.next,
+            controller: _controller5,
+            style: TextFieldTextStyle(),
                 decoration: TextFieldDecoration(
                     'Minimum experience in days to earn leave'),
                 keyboardType: TextInputType.number,
@@ -243,10 +263,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               SizedBox(height: 10),
               //------------------Switches-----------------
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.grey[300], width: 1),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,10 +276,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     Switch(
-                      value: isSwitched1,
+                      value: _isSwitched1,
                       onChanged: (value) {
                         setState(() {
-                          isSwitched1 = value;
+                          _isSwitched1 = value;
                         });
                       },
                       activeTrackColor: kPrimaryColor.withOpacity(0.6),
@@ -270,10 +290,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               ),
               SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.grey[300], width: 1),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -283,10 +303,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     Switch(
-                      value: isSwitched2,
+                      value: _isSwitched2,
                       onChanged: (value) {
                         setState(() {
-                          isSwitched2 = value;
+                          _isSwitched2 = value;
                         });
                       },
                       activeTrackColor: kPrimaryColor.withOpacity(0.6),
@@ -297,10 +317,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               ),
               SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.grey[300], width: 1),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -310,10 +330,10 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     Switch(
-                      value: isSwitched3,
+                      value: _isSwitched3,
                       onChanged: (value) {
                         setState(() {
-                          isSwitched3 = value;
+                          _isSwitched3 = value;
                         });
                       },
                       activeTrackColor: kPrimaryColor.withOpacity(0.6),
@@ -337,7 +357,23 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                   if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                    _dropdownValue1 != null &&
+                    _dropdownValue2 != null &&
+                    _dropdownValue3 != null &&
+                   _gender != null) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
                   },
                   child: Text(
                     'Save Policy',

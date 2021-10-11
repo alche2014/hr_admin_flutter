@@ -8,6 +8,9 @@ import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.da
 import 'package:hr_admin/HR_app/Screens/Privacy_app%20copy/screen_Privacy_app.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:hr_admin/main.dart';
+
+var darkmode = false;
 
 class Body extends StatefulWidget {
   @override
@@ -15,8 +18,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  var _isSwitched = false;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -73,9 +74,9 @@ class _BodyState extends State<Body> {
             SizedBox(height: 20),
             //------------------Switch----------------
             Container(
-              margin: EdgeInsets.symmetric(horizontal:  40 , vertical: 30),
+              // margin: EdgeInsets.symmetric(horizontal:  20 , vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              
+
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey, width: 1),
@@ -97,10 +98,11 @@ class _BodyState extends State<Body> {
                     ],
                   ),
                   Switch(
-                    value: _isSwitched,
+                    value: darkmode,
                     onChanged: (value) {
                       setState(() {
-                        _isSwitched = value;
+                        darkmode = value;
+                        MyApp.isdarkmode.value =  MyApp.isdarkmode.value == false? true : false;
                       });
                     },
                     activeTrackColor: kPrimaryColor.withOpacity(0.6),
