@@ -8,8 +8,11 @@ class FormCompanyInfo extends StatefulWidget {
 }
 
 class _FormCompanyInfoState extends State<FormCompanyInfo> {
-  
-  String dropdownValue;
+  String dropdownValue1;
+  String dropdownValue2;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -17,22 +20,10 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
       child: Column(
         children: [
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Company Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Company Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -48,26 +39,10 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: 'Postal Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller2,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Postal Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -83,46 +58,33 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Phone',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            controller: _controller3,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Phone'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
 //-----------------------DropDown-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: dropdownValue1,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
                 isExpanded: true,
                 hint: Text(
                   'Industry',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    dropdownValue1 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -138,13 +100,13 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
           ),
           SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: dropdownValue2,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -155,7 +117,7 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    dropdownValue2 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -175,8 +137,20 @@ class _FormCompanyInfoState extends State<FormCompanyInfo> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => NavigationBar()));
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    dropdownValue1 != null &&
+                    dropdownValue2 != null) {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => NavigationBar()));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please fill the complete form'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

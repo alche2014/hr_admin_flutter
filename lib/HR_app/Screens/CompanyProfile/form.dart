@@ -63,42 +63,11 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 30),
 //------------------textfields--------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Company Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
-           
+            decoration: TextFieldDecoration('Company Name'),
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Portal Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            decoration: TextFieldDecoration('Portal Name'),
           ),
           SizedBox(height: 10),
           //-----------------------DropDown1-------------------
@@ -106,7 +75,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: dropdownValue1,
@@ -140,7 +109,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: dropdownValue2,
@@ -171,108 +140,37 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 10),
 //-------------------------Textfield--------------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Mobile',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            decoration: TextFieldDecoration('Mobile'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Email',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            decoration: TextFieldDecoration('Email'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  final pattern =
-                      (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-                  final regExp = RegExp(pattern);
+            validator: (value) {
+              final pattern =
+                  (r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+              final regExp = RegExp(pattern);
 
-                  if (value.isEmpty) {
-                    return null;
-                  } else if (value.contains(' ')) {
-                    return 'can not have blank spaces';
-                  } else if (!regExp.hasMatch(value)) {
-                    return 'Enter a valid email';
-                  } else {
-                    return null;
-                  }
-                },
+              if (value.isEmpty) {
+                return null;
+              } else if (value.contains(' ')) {
+                return 'can not have blank spaces';
+              } else if (!regExp.hasMatch(value)) {
+                return 'Enter a valid email';
+              } else {
+                return null;
+              }
+            },
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Contact Person',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            
+            decoration: TextFieldDecoration('Contact Person'),
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Country',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-           
+            decoration: TextFieldDecoration('Country'),
           ),
           SizedBox(height: 10),
           //----------------------Dropdown3----------------------------
@@ -280,7 +178,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: dropdownValue3,
@@ -311,30 +209,7 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
           SizedBox(height: 10),
 //-------------------textfield-----------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Address',
-              suffixIcon: Icon(
-                Icons.location_on,
-                color: kPrimaryColor,
-              ),
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-           
+            decoration: TextFieldDecoration('Address'),
           ),
 
           SizedBox(height: 10),

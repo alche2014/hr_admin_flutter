@@ -22,6 +22,7 @@ class _MessagesState extends State<Messages>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Messages'),
         actions: [
           IconButton(

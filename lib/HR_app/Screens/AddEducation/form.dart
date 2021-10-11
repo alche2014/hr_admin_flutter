@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:intl/intl.dart';
 
 class AddEducationForm extends StatefulWidget {
   @override
@@ -7,9 +8,14 @@ class AddEducationForm extends StatefulWidget {
 }
 
 class _AddEducationFormState extends State<AddEducationForm> {
-  var dropdownValue;
-  var dropdownValue2;
-  // bool _iscchecked = false;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  var _dropdownValue;
+  var _dateOfBirth1;
+  var _dateOfBirth2;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -22,33 +28,21 @@ class _AddEducationFormState extends State<AddEducationForm> {
             children: [
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'School',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller1,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('School'),
               ),
               SizedBox(height: 10),
               //-----------------------DropDown-------------------
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 1)),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: dropdownValue,
+                    value: _dropdownValue,
                     style: TextStyle(color: Colors.black),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     elevation: 0,
@@ -59,7 +53,7 @@ class _AddEducationFormState extends State<AddEducationForm> {
                     ),
                     onChanged: (String newValue) {
                       setState(() {
-                        dropdownValue = newValue;
+                        _dropdownValue = newValue;
                       });
                     },
                     items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -76,22 +70,10 @@ class _AddEducationFormState extends State<AddEducationForm> {
               SizedBox(height: 10),
 //---------------------textfield-----------------------------
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Field of study',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller2,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('Field of study'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
                   final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -111,23 +93,39 @@ class _AddEducationFormState extends State<AddEducationForm> {
                 children: [
                   Flexible(
                     child: Container(
-                      height: 60,
-                      padding: EdgeInsets.all(10),
+                      height: 50,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey, width: 1)),
+                          borderRadius: BorderRadius.circular(5),
+                          border:
+                              Border.all(color: Colors.grey[300], width: 1)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Start Date'),
+                          Text(
+                            _dateOfBirth1 != null
+                                ? DateFormat.yMd()
+                                    .format(_dateOfBirth1)
+                                    .toString()
+                                : 'Start Date',
+                            style: TextStyle(
+                                color: _dateOfBirth1 != null
+                                    ? Colors.black
+                                    : Colors.grey),
+                          ),
                           IconButton(
                             icon: Icon(Icons.today),
                             onPressed: () {
                               showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime(2005),
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime.now());
+                                      context: context,
+                                      initialDate: DateTime(2005),
+                                      firstDate: DateTime(2000),
+                                      lastDate: DateTime.now())
+                                  .then((value) {
+                                setState(() {
+                                  _dateOfBirth1 = value;
+                                });
+                              });
                             },
                           )
                         ],
@@ -137,23 +135,39 @@ class _AddEducationFormState extends State<AddEducationForm> {
                   SizedBox(width: 5),
                   Flexible(
                     child: Container(
-                      height: 60,
-                      padding: EdgeInsets.all(10),
+                      height: 50,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey, width: 1)),
+                          borderRadius: BorderRadius.circular(5),
+                          border:
+                              Border.all(color: Colors.grey[300], width: 1)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('End Date'),
+                          Text(
+                            _dateOfBirth2 != null
+                                ? DateFormat.yMd()
+                                    .format(_dateOfBirth2)
+                                    .toString()
+                                : 'End Date',
+                            style: TextStyle(
+                                color: _dateOfBirth2 != null
+                                    ? Colors.black
+                                    : Colors.grey),
+                          ),
                           IconButton(
                             icon: Icon(Icons.today),
                             onPressed: () {
                               showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime(2005),
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime.now());
+                                      context: context,
+                                      initialDate: DateTime(2005),
+                                      firstDate: DateTime(2000),
+                                      lastDate: DateTime.now())
+                                  .then((value) {
+                                setState(() {
+                                  _dateOfBirth2 = value;
+                                });
+                              });
                             },
                           )
                         ],
@@ -165,74 +179,27 @@ class _AddEducationFormState extends State<AddEducationForm> {
               SizedBox(height: 10),
 //------------------------textfield-----------------
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Grade',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller3,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('Grade'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Activitie & Societies',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller4,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('Activitie & Societies'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
-                  final regExp = RegExp(pattern);
-                  if (value.isEmpty) {
-                    return null;
-                  } else if (!regExp.hasMatch(value)) {
-                    return 'InValid';
-                  } else {
-                    return null;
-                  }
-                },
               ),
               SizedBox(height: 10),
 //---------------------textfield-----------------------------
               TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: _controller5,
+                style: TextFieldTextStyle(),
                 maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: 'Description',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                decoration: TextFieldDecoration('Description'),
               ),
             ],
           ),
@@ -242,7 +209,22 @@ class _AddEducationFormState extends State<AddEducationForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                    _dropdownValue != null &&
+                    _dateOfBirth1 != null &&
+                    _dateOfBirth2 != null) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

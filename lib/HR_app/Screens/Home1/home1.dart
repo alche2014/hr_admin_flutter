@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/cards.dart';
 import 'package:hr_admin/HR_app/Screens/Home1/charts.dart';
+import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class Home1 extends StatefulWidget {
@@ -41,7 +42,14 @@ class _Home1State extends State<Home1> {
                       ),
                     ],
                   ),
-                  IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
+                  IconButton(
+                      icon: Icon(Icons.notifications),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Notifications()));
+                      }),
                 ],
               ),
               SizedBox(height: 30),
@@ -134,7 +142,8 @@ class _Home1State extends State<Home1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(flex: 2, child: PieChartWidget()), // Class PieChart
+                    Expanded(
+                        flex: 2, child: PieChartWidget()), // Class PieChart
                     Expanded(
                       flex: 1,
                       child: Column(

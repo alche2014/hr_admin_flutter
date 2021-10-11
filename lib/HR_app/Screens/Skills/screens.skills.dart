@@ -30,28 +30,7 @@ class _SkillsState extends State<Skills> {
                   //--------------------textfield-----------------------------
                   TextFormField(
                     controller: _textcontroller,
-                    decoration: InputDecoration(
-                      hintText: 'Add Skills',
-                      hintStyle: TextStyle(color: Colors.grey),
-                      // filled: true,
-                      // fillColor: Colors.white,
-                      fillColor: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kPrimaryColor.withOpacity(0.1)
-                          : kContentColorLightTheme.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                    ),
+                    decoration: TextFieldDecoration('Add Skills'),
                     onFieldSubmitted: (value) {
                       setState(() {
                         if (_textcontroller.text.isNotEmpty)
@@ -81,7 +60,14 @@ class _SkillsState extends State<Skills> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    if(Chipmaker.choosed.isNotEmpty)
+                      Navigator.pop(context);
+                    else
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Add some Skills'),
+                    ),
+                  );
                   },
                   child: Text(
                     'Save',

@@ -3,6 +3,7 @@ import 'package:hr_admin/HR_app/app_bar.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class About extends StatelessWidget {
+  TextEditingController _controller = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +20,8 @@ class About extends StatelessWidget {
                 border: Border.all(width: 1, color: Colors.grey),
               ),
               child: TextField(
+                controller: _controller,
+                style: TextFieldTextStyle(),
                 decoration: InputDecoration(
                     border: InputBorder.none, hintText: 'Type Here'),
                 maxLines: 5,
@@ -30,7 +33,15 @@ class About extends StatelessWidget {
               widthFactor: 1,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (_controller.text.isNotEmpty) {
+                    Navigator.pop(context);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Complete the Form.'),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kPrimaryColor,

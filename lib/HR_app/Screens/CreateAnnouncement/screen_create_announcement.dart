@@ -23,23 +23,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
             Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Tile',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                  ),
-                 
+                  decoration: TextFieldDecoration('Tile'),
                 ),
                 SizedBox(height: 10),
                 //----------------------Dropdown1----------------------------
@@ -47,7 +31,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey, width: 1)),
+                      border: Border.all(color: Colors.grey[300], width: 1)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: dropdownValue1,
@@ -81,7 +65,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey, width: 1)),
+                      border: Border.all(color: Colors.grey[300], width: 1)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: dropdownValue2,
@@ -169,23 +153,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
                 SizedBox(height: 10),
                 TextFormField(
                   maxLines: 4,
-                  decoration: InputDecoration(
-                    hintText: 'Description',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                    ),
-                  ),
-                  
+                  decoration: TextFieldDecoration('Description'),
                 ),
               ],
             ),

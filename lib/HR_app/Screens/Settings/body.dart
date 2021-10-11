@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/About_app/screen_about_app.dart';
 import 'package:hr_admin/HR_app/Screens/CompanyProfile/screen_company_profile.dart';
 import 'package:hr_admin/HR_app/Screens/Departments/screen_departmennts.dart';
 import 'package:hr_admin/HR_app/Screens/LeavePolicies/screen_leave_policies.dart';
+import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.dart';
+import 'package:hr_admin/HR_app/Screens/Privacy_app%20copy/screen_Privacy_app.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
@@ -68,9 +71,11 @@ class _BodyState extends State<Body> {
               ),
             ),
             SizedBox(height: 20),
-            //------------------Switche-----------------
+            //------------------Switch----------------
             Container(
+              margin: EdgeInsets.symmetric(horizontal:  40 , vertical: 30),
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey, width: 1),
@@ -115,111 +120,129 @@ class _BodyState extends State<Body> {
               child: ExpansionTile(
                 childrenPadding:
                     EdgeInsets.symmetric(horizontal: 60, vertical: 10),
-                title: Text('Organization'),
+                title: Text(
+                  'Organization',
+                  style: TextStyle(color: Colors.grey[600]),
+                ),
                 leading: Icon(
                   Icons.lock,
                   color: kPrimaryColor,
                 ),
                 children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 15,
-                        color: kPrimaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Company_Profile()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: kPrimaryColor,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Company Profile',
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Company_Profile()));
-                        },
-                        child: Text(
-                          'Company Profile',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 15,
-                        color: kPrimaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Departments()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: kPrimaryColor,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Department',
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Departments()));
-                        },
-                        child: Text(
-                          'Department',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 15,
-                        color: kPrimaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => OfficeLocation()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: kPrimaryColor,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Office Locations',
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => OfficeLocation()));
-                        },
-                        child: Text(
-                          'Office Locations',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 15,
-                        color: kPrimaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ShiftSchedule()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: kPrimaryColor,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Shift Schedule',
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ShiftSchedule()));
-                        },
-                        child: Text(
-                          'Shift Schedule',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 15,
-                        color: kPrimaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LeavePolicies()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 15,
+                            color: kPrimaryColor,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Leave Policy',
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LeavePolicies()));
-                        },
-                        child: Text(
-                          'Leave Policy',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -230,7 +253,10 @@ class _BodyState extends State<Body> {
               borderRadius: BorderRadius.circular(10),
               child: InkWell(
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Notifications()));
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 18, vertical: 18),
                   decoration: BoxDecoration(
@@ -269,7 +295,10 @@ class _BodyState extends State<Body> {
               borderRadius: BorderRadius.circular(10),
               child: InkWell(
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PrivacyApp()));
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 18, vertical: 18),
                   decoration: BoxDecoration(
@@ -308,7 +337,10 @@ class _BodyState extends State<Body> {
               borderRadius: BorderRadius.circular(10),
               child: InkWell(
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutApp()));
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 18, vertical: 18),
                   decoration: BoxDecoration(

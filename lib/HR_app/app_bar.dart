@@ -1,6 +1,7 @@
 //.................custom appbar...............
 
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class app_bar extends StatelessWidget implements PreferredSizeWidget {
@@ -35,8 +36,8 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget {
                 Icons.notifications,
               ),
               onPressed: () {
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(builder: (context) => Notifications()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Notifications()));
               },
             ),
         ],

@@ -29,43 +29,11 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
             //------------------------textfield----------------
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Ploicy Name',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-                
+                decoration: TextFieldDecoration('Ploicy Name'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Short Name',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-                
+                decoration: TextFieldDecoration('Short Name'),
               ),
               SizedBox(height: 10),
               //------------------Drop down--------------------
@@ -73,7 +41,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 1)),
+                    border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     value: dropdownValue,
@@ -106,7 +74,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 1)),
+                    border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     value: dropdownValue2,
@@ -199,7 +167,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 1)),
+                    border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     value: dropdownValue3,
@@ -259,62 +227,17 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
               SizedBox(height: 10),
               //-------------------textfields----------------
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Leave Quote',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-                
+                decoration: TextFieldDecoration('Leave Quote'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Minimum Days to Apply',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                decoration: TextFieldDecoration('Minimum Days to Apply'),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Minimum experience in days to earn leave',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                decoration: TextFieldDecoration(
+                    'Minimum experience in days to earn leave'),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 10),

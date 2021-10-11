@@ -25,6 +25,8 @@ class _NavigationBarState extends State<NavigationBar> {
     return Scaffold(
       body: tabs[_currentindex],
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: _currentindex,
         type: BottomNavigationBarType.fixed,
         // fixedColor: Colors.red[800],
@@ -42,7 +44,7 @@ class _NavigationBarState extends State<NavigationBar> {
             // backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_add_alt_1),
+            icon: Icon(Icons.campaign),
             label: 'Announcement',
             // backgroundColor: Colors.blue,
           ),

@@ -8,6 +8,10 @@ class RecoveryCode extends StatelessWidget {
   final node1 = FocusNode();
   final node2 = FocusNode();
   final node3 = FocusNode();
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +90,7 @@ class RecoveryCode extends StatelessWidget {
                           ),
                           child: TextField(
                             focusNode: node0,
+                            controller: _controller1,
                             style: TextStyle(fontSize: 42),
                             textAlign: TextAlign.center,
                             maxLength: 1,
@@ -95,7 +100,7 @@ class RecoveryCode extends StatelessWidget {
                                 counter: Offstage()),
                             keyboardType: TextInputType.number,
                             onChanged: (value) {
-                              if(value.isNotEmpty)
+                              if (value.isNotEmpty)
                                 FocusScope.of(context).requestFocus(node1);
                             },
                           ),
@@ -109,6 +114,7 @@ class RecoveryCode extends StatelessWidget {
                           ),
                           child: TextField(
                             focusNode: node1,
+                            controller: _controller2,
                             style: TextStyle(fontSize: 42),
                             textAlign: TextAlign.center,
                             maxLength: 1,
@@ -134,6 +140,7 @@ class RecoveryCode extends StatelessWidget {
                           ),
                           child: TextField(
                             focusNode: node2,
+                            controller: _controller3,
                             style: TextStyle(fontSize: 42),
                             textAlign: TextAlign.center,
                             maxLength: 1,
@@ -159,6 +166,7 @@ class RecoveryCode extends StatelessWidget {
                           ),
                           child: TextField(
                             focusNode: node3,
+                            controller: _controller4,
                             style: TextStyle(fontSize: 42),
                             textAlign: TextAlign.center,
                             maxLength: 1,
@@ -180,8 +188,21 @@ class RecoveryCode extends StatelessWidget {
                       widthFactor: 1,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ResetYourPassword()));
+                          if (_controller1.text.isNotEmpty &&
+                              _controller2.text.isNotEmpty &&
+                              _controller3.text.isNotEmpty &&
+                              _controller4.text.isNotEmpty)
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ResetYourPassword()));
+                          if (_controller1.text.isEmpty ||
+                              _controller2.text.isEmpty ||
+                              _controller3.text.isEmpty ||
+                              _controller4.text.isEmpty)
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Enter the right Code.'),
+                              ),
+                            );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,

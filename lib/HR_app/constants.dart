@@ -21,5 +21,31 @@ Future<String> getdata(String key) async {
   return preferences.getString(key) ?? "";
   // return data;
 }
+
 var phonemask = new MaskTextInputFormatter(mask: '+92 ### #######');
 var cnicemask = new MaskTextInputFormatter(mask: '#####-#######-#');
+
+// ignore: non_constant_identifier_names
+InputDecoration TextFieldDecoration(String hint) {
+  return InputDecoration(
+    // labelStyle: TextStyle(fontSize: 20),
+    
+    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+    hintText: hint,
+    hintStyle: TextStyle(color: Colors.grey),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(width: 1, color: Colors.grey[300]),
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(color: Colors.grey[300], width: 1),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(width: 1, color: Colors.grey[300]),
+    ),
+  );
+}
+
+TextStyle TextFieldTextStyle() => TextStyle(fontSize: 14);

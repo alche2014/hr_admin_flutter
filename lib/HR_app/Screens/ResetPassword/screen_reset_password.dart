@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Pg1_Signin.dart';
+import 'package:hr_admin/HR_app/Screens/Requests/Components/model.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
 class ResetYourPassword extends StatelessWidget {
-  TextEditingController _controler1 = new TextEditingController();
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,23 +74,9 @@ class ResetYourPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     TextFormField(
-                      controller: _controler1,
-                      decoration: InputDecoration(
-                        hintText: 'Create Password',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(width: 1, color: Colors.grey),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(width: 1, color: Colors.grey),
-                        ),
-                      ),
+                      style: TextFieldTextStyle(),
+                      controller: _controller1,
+                      decoration: TextFieldDecoration('Create Password'),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
                         if (value.isEmpty) {
@@ -103,27 +91,14 @@ class ResetYourPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
-                      decoration: InputDecoration(
-                        hintText: 'Verify Password',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(width: 1, color: Colors.grey),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey, width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(width: 1, color: Colors.grey),
-                        ),
-                      ),
+                      style: TextFieldTextStyle(),
+                      controller: _controller2,
+                      decoration: TextFieldDecoration('Verify Password'),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) {
                         if (value.isEmpty) {
                           return null;
-                        } else if (value != _controler1.text) {
+                        } else if (value != _controller1.text) {
                           return 'Enter same Password';
                         } else
                           return null;
@@ -134,8 +109,17 @@ class ResetYourPassword extends StatelessWidget {
                       widthFactor: 1,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Signin_Pg1()));
+                          if (_controller1.text.isNotEmpty &&
+                              _controller2.text.isNotEmpty)
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Signin_Pg1()));
+                          if (_controller1.text.isEmpty ||
+                              _controller2.text.isEmpty)
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Complete the Form.'),
+                              ),
+                            );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,

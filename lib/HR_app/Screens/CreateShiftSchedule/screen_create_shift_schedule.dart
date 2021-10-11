@@ -31,22 +31,7 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                 children: [
                   //------------------textfields--------------------
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Shift Name',
-                      hintStyle: TextStyle(color: Colors.grey),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(width: 1, color: Colors.grey),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(width: 1, color: Colors.grey),
-                      ),
-                    ),
+                    decoration: TextFieldDecoration('Shift Name'),
                   ),
                   SizedBox(height: 10),
                   //-----------------------DropDown-------------------
@@ -54,7 +39,7 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey, width: 1)),
+                        border: Border.all(color: Colors.grey[300], width: 1)),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: dropdownValue,
@@ -85,7 +70,7 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                   SizedBox(height: 10),
                   Row(
                     children: [
-      //---------------------------checkbox-------------------
+                      //---------------------------checkbox-------------------
                       Flexible(
                         child: Theme(
                           data: ThemeData(
@@ -118,30 +103,12 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                       //------------------textfields--------------------
                       Flexible(
                         child: TextFormField(
-                          decoration: InputDecoration(
-                            hintText: 'Min',
-                            hintStyle: TextStyle(color: Colors.grey),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.grey),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 1),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.grey),
-                            ),
-                          ),
+                          decoration: TextFieldDecoration('Min'),
                         ),
                       ),
                     ],
                   ),
-      
+
                   SizedBox(height: 10),
                   Align(
                     alignment: Alignment.centerLeft,

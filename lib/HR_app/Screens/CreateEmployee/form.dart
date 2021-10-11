@@ -10,29 +10,26 @@ class CreateEmployeeForm extends StatefulWidget {
 
 class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
   var _gender;
-  var dropdownValue;
+  var _dropdownValue1;
+  var _dropdownValue2;
+  var _dropdownValue3;
+  var _dropdownValue4;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  TextEditingController _controller6 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'First Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('First Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -50,22 +47,9 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             height: 10,
           ),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Last Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            controller: _controller2,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Last Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -82,24 +66,24 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           SizedBox(height: 10),
           //-----------------------DropDown-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue1,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
                 isExpanded: true,
                 hint: Text(
                   'Type',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue1 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -116,22 +100,10 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           SizedBox(height: 10),
 //-------------------Textfields------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'User Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            controller: _controller3,
+            textInputAction: TextInputAction.next,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('User Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -147,23 +119,10 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           ),
           SizedBox(height: 10),
           TextFormField(
+            controller: _controller4,
+            style: TextFieldTextStyle(),
             obscureText: true,
-            decoration: InputDecoration(
-              hintText: 'Password',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            decoration: TextFieldDecoration('Password'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               if (value.isEmpty) {
@@ -179,24 +138,24 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           SizedBox(height: 10),
           //-----------------------DropDown-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue2,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
                 isExpanded: true,
                 hint: Text(
                   'Job Position',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue2 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -212,24 +171,24 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           ),
           SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue3,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
                 isExpanded: true,
                 hint: Text(
                   'Reporting to',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue3 = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -244,26 +203,45 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             ),
           ),
           SizedBox(height: 10),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Email Address',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                value: _dropdownValue4,
+                style: TextStyle(color: Colors.black),
+                icon: const Icon(Icons.keyboard_arrow_down),
+                elevation: 0,
+                isExpanded: true,
+                hint: Text(
+                  'Leave Policy',
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    _dropdownValue4 = newValue;
+                  });
+                },
+                items: <String>['1', '2'].map<DropdownMenuItem<String>>(
+                  (String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  },
+                ).toList(),
               ),
             ),
+          ),
+          SizedBox(height: 10),
+//--------------------------textfields-------------------------
+          TextFormField(
+            textInputAction: TextInputAction.next,
+            controller: _controller5,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Email Address'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern =
@@ -283,22 +261,9 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Phone',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            controller: _controller6,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Phone'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
@@ -320,7 +285,10 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
                       );
                     },
                   ),
-                  Text('Male'),
+                  Text(
+                    'Male',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
                 ],
               ),
               SizedBox(width: 20),
@@ -338,7 +306,10 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
                       );
                     },
                   ),
-                  Text('Female')
+                  Text(
+                    'Female',
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                  )
                 ],
               )
             ],
@@ -349,7 +320,26 @@ class _CreateEmployeeFormState extends State<CreateEmployeeForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                    _controller6.text.isNotEmpty &&
+                    _dropdownValue1 != null &&
+                    _dropdownValue2 != null &&
+                    _dropdownValue3 != null &&
+                    _dropdownValue4 != null &&
+                    _gender != null) {
+                  Navigator.of(context).pop();
+                }
+                else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Complete the Form.'),
+                              ),
+                            );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

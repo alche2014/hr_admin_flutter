@@ -15,9 +15,19 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
   var _gender;
   var _dropdownValue;
   var _dropdownValue1;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  TextEditingController _controller6 = new TextEditingController();
+  TextEditingController _controller7 = new TextEditingController();
+  TextEditingController _controller8 = new TextEditingController();
+  TextEditingController _controller9 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
 //----------------------image-------------------
@@ -67,22 +77,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           SizedBox(height: 30),
 //------------------textfields--------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -100,22 +98,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             height: 10,
           ),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Email',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller2,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Email'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern =
@@ -135,32 +121,19 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Phone',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            controller: _controller3,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Phone'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           //-----------------------DropDown-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: _dropdownValue,
@@ -206,7 +179,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                       );
                     },
                   ),
-                  Text('Male'),
+                  Text(
+                    'Male',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ],
               ),
               SizedBox(width: 20),
@@ -224,7 +200,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                       );
                     },
                   ),
-                  Text('Female')
+                  Text('Female',
+                      style: TextStyle(
+                        color: Colors.grey,
+                      )),
                 ],
               )
             ],
@@ -232,10 +211,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           SizedBox(height: 10),
 //----------------------Dropdown----------------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: _dropdownValue1,
@@ -266,44 +245,17 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           SizedBox(height: 10),
 //-------------------------Textfield--------------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Blood Group',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller4,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Blood Group'),
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Designatoin',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller5,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Designatoin'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -319,25 +271,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Bank Name',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller6,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Bank Name'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -353,25 +290,10 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Bank No',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller7,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Bank No'),
             keyboardType: TextInputType.number,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
@@ -385,49 +307,18 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'CNIC',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller8,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('CNIC'),
             keyboardType: TextInputType.number,
             inputFormatters: [cnicemask],
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Address',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            controller: _controller9,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Address'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               if (value.isEmpty) {
@@ -444,7 +335,26 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                    _controller6.text.isNotEmpty &&
+                    _controller7.text.isNotEmpty &&
+                    _controller8.text.isNotEmpty &&
+                    _controller9.text.isNotEmpty &&
+                    _dropdownValue1 != null &&
+                    _dropdownValue != null &&
+                    _gender != null) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

@@ -7,7 +7,11 @@ class DependentForm extends StatefulWidget {
 }
 
 class _DependentFormState extends State<DependentForm> {
-  var dropdownValue;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  var _dropdownValue;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -17,22 +21,10 @@ class _DependentFormState extends State<DependentForm> {
           Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Name',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller1,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('Name'),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
                   final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -49,13 +41,13 @@ class _DependentFormState extends State<DependentForm> {
               SizedBox(height: 10),
               //-----------------------DropDown-------------------
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 1)),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color: Colors.grey[300], width: 1)),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
-                    value: dropdownValue,
+                    value: _dropdownValue,
                     style: TextStyle(color: Colors.black),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     elevation: 0,
@@ -66,7 +58,7 @@ class _DependentFormState extends State<DependentForm> {
                     ),
                     onChanged: (String newValue) {
                       setState(() {
-                        dropdownValue = newValue;
+                        _dropdownValue = newValue;
                       });
                     },
                     items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -83,42 +75,17 @@ class _DependentFormState extends State<DependentForm> {
               SizedBox(height: 10),
 //---------------------textfield-----------------------------
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Company Name',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                textInputAction: TextInputAction.next,
+                controller: _controller2,
+                style: TextFieldTextStyle(),
+                decoration: TextFieldDecoration('Company Name'),
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: _controller3,
+                style: TextFieldTextStyle(),
                 maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: 'Description',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey, width: 1),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
+                decoration: TextFieldDecoration('Description'),
               ),
             ],
           ),
@@ -127,7 +94,18 @@ class _DependentFormState extends State<DependentForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _dropdownValue != null) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,

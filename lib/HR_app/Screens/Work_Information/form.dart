@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:intl/intl.dart';
 
 class Work_Info_Form extends StatefulWidget {
   @override
@@ -7,7 +8,14 @@ class Work_Info_Form extends StatefulWidget {
 }
 
 class Work_Info_FormState extends State<Work_Info_Form> {
-  var dropdownValue;
+  TextEditingController _controller1 = new TextEditingController();
+  TextEditingController _controller2 = new TextEditingController();
+  TextEditingController _controller3 = new TextEditingController();
+  TextEditingController _controller4 = new TextEditingController();
+  TextEditingController _controller5 = new TextEditingController();
+  TextEditingController _controller6 = new TextEditingController();
+  var _dateofbirth;
+  var _dropdownValue;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -15,22 +23,10 @@ class Work_Info_FormState extends State<Work_Info_Form> {
         children: [
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Department',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller1,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Department'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -46,22 +42,10 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Designation',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller2,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Designation'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -77,22 +61,10 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Role',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller3,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Role'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -108,22 +80,10 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           ),
           SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Reporting to',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller4,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Reporting to'),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) {
               final pattern = ('[a-zA-Z]+([\s][a-zA-Z]+)*');
@@ -140,13 +100,13 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           SizedBox(height: 10),
           //-----------------------DropDown-------------------
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
-                value: dropdownValue,
+                value: _dropdownValue,
                 style: TextStyle(color: Colors.black),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 elevation: 0,
@@ -157,7 +117,7 @@ class Work_Info_FormState extends State<Work_Info_Form> {
                 ),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    _dropdownValue = newValue;
                   });
                 },
                 items: <String>['1', '2'].map<DropdownMenuItem<String>>(
@@ -174,45 +134,44 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           SizedBox(height: 10),
 //---------------------textfield-----------------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Phone',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
+            textInputAction: TextInputAction.next,
+            controller: _controller5,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Phone'),
             keyboardType: TextInputType.phone,
             inputFormatters: [phonemask],
           ),
           SizedBox(height: 10),
           //----------------------Date picker----------------------------
           Container(
-            height: 60,
-            padding: EdgeInsets.all(10),
+            height: 50,
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1)),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: Colors.grey[300], width: 1)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Date of Birth'),
+                Text(
+                  _dateofbirth != null
+                      ? DateFormat.yMd().format(_dateofbirth).toString()
+                      : 'Date of Birth',
+                  style: TextStyle(
+                      color: _dateofbirth != null ? Colors.black : Colors.grey),
+                ),
                 IconButton(
                   icon: Icon(Icons.today),
                   onPressed: () {
                     showDatePicker(
-                        context: context,
-                        initialDate: DateTime(2005),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime.now());
+                      context: context,
+                      initialDate: DateTime(2005),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime.now(),
+                    ).then((value) {
+                      setState(() {
+                        _dateofbirth = value;
+                      });
+                    });
                   },
                 )
               ],
@@ -221,23 +180,9 @@ class Work_Info_FormState extends State<Work_Info_Form> {
           SizedBox(height: 10),
 //---------------------textfields------------------------------
           TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Location',
-              hintStyle: TextStyle(color: Colors.grey),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: Colors.grey, width: 1),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1, color: Colors.grey),
-              ),
-            ),
-            
+            controller: _controller6,
+            style: TextFieldTextStyle(),
+            decoration: TextFieldDecoration('Location'),
           ),
           SizedBox(height: 30),
 //--------------------Save button---------------------
@@ -245,7 +190,22 @@ class Work_Info_FormState extends State<Work_Info_Form> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (_controller1.text.isNotEmpty &&
+                    _controller2.text.isNotEmpty &&
+                    _controller3.text.isNotEmpty &&
+                    _controller4.text.isNotEmpty &&
+                    _controller5.text.isNotEmpty &&
+                    _controller6.text.isNotEmpty &&
+                    _dropdownValue != null &&
+                    _dateofbirth != null) {
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Complete the Form.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: kPrimaryColor,
