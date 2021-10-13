@@ -6,7 +6,7 @@ class CreateEmployee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Create Employee'),
+      appBar: app_bar(context,'Create Employee',true,'notification',true),
       body: SingleChildScrollView(
         child: Padding(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 10),

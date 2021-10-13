@@ -52,7 +52,7 @@ ThemeData darkThemeData(BuildContext context) {
 final appBarTheme = AppBarTheme(
     centerTitle: false,
     elevation: 0,
-    backgroundColor: kPrimaryColor
+    // backgroundColor: kPrimaryColor
     // iconTheme: IconThemeData(color: Colors.black),
     // textTheme: TextTheme(
     //   headline6: TextStyle(
@@ -64,7 +64,7 @@ final appBarTheme = AppBarTheme(
 final appBarThemedark = AppBarTheme(
   centerTitle: false,
   elevation: 0,
-  backgroundColor: kPrimaryColor,
+  // backgroundColor: kPrimaryColor,
 );
 final tabBarTheme = TabBarTheme(labelColor: Colors.black, unselectedLabelColor: Colors.grey[800]);
 final tabBarThemedark = TabBarTheme(labelColor: Colors.white);

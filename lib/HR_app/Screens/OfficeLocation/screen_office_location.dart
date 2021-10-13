@@ -9,10 +9,7 @@ class OfficeLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Office Location',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context,'Office Location',true,'tune',true),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: ListView.builder(

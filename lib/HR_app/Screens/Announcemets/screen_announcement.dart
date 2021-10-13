@@ -9,7 +9,7 @@ class Announcements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Announcements',leading: false),
+      appBar: app_bar(context,'Announcement',false,'notification',true),
       body: Container(
         child: ListView.builder(
           itemCount: myAnnouncement.length,

@@ -9,10 +9,7 @@ class ShiftSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Shift Schedule',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context,'Shift Schedule',true,'tune',true),
       body: ListView.builder(
         itemCount: myshiftschedule.length,
         itemBuilder: (_, index) {

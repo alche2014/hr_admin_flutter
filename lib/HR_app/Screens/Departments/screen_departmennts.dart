@@ -11,10 +11,7 @@ class Departments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Departments',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context,'Departments',true,'tune',true),
       body: ListView.builder(
         itemCount: myDepartment.length,
         itemBuilder: (_, index) {

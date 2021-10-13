@@ -15,7 +15,7 @@ class _ExperienceState extends State<Experience> {
   Widget build(BuildContext context) {
     return Scaffold(
 //-----------------------Appbar--------------------
-      appBar: app_bar(titilee: 'Experience'),
+      appBar: app_bar(context,'Experience',true,'notification',true),
 
       body: ListView.builder(
         itemCount: myExperience.length,

@@ -15,7 +15,7 @@ class _EducationState extends State<Education> {
   Widget build(BuildContext context) {
     return Scaffold(
 //-----------------------Appbar--------------------
-      appBar: app_bar(titilee: 'Education'),
+      appBar: app_bar(context,'Education',true,'notification',true),
 
       body: ListView.builder(
         itemCount: myEducation.length,

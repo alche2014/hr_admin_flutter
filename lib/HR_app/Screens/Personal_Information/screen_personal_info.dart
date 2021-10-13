@@ -7,7 +7,7 @@ class Personal_Information extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Personal Information'),
+      appBar: app_bar(context,'Personal Information',true,'notification',true),
       body: SingleChildScrollView(
         child: Padding(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 10),

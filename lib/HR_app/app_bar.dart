@@ -4,44 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 
-class app_bar extends StatelessWidget implements PreferredSizeWidget {
-  final String titilee;
-  bool leading;
-  String myicon;
-  app_bar({this.titilee, this.leading, this.myicon});
 
-  @override
-  Size get preferredSize => Size.fromHeight(60.0);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      appBar: AppBar(
-        title: Text(titilee),
-        // backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: leading ?? true,
-        actions: <Widget>[
-          if (myicon == 'tune')
-            IconButton(
-              icon: Icon(Icons.tune),
-              onPressed: () {
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(builder: (context) => Notifications()));
-              },
+  AppBar app_bar(
+    BuildContext context,
+    final String titilee,
+    bool leading,
+    String myicon,
+    bool barcolor,
+  ) {
+    return AppBar(
+      elevation: 0,
+      title: Text(titilee),
+      // backgroundColor: Colors.blue,
+      backgroundColor: barcolor == false ? Colors.transparent : kPrimaryColor,
+      automaticallyImplyLeading: leading ?? true,
+      actions: <Widget>[
+        if (myicon == 'tune')
+          IconButton(
+            icon: Icon(Icons.tune),
+            onPressed: () {
+              // Navigator.of(context).push(
+              //     MaterialPageRoute(builder: (context) => Notifications()));
+            },
+          ),
+        if (myicon == 'notification')
+          IconButton(
+            icon: Icon(
+              Icons.notifications,
             ),
-          if (myicon != 'tune')
-            IconButton(
-              icon: Icon(
-                Icons.notifications,
-              ),
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Notifications()));
-              },
-            ),
-        ],
-      ),
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Notifications()));
+            },
+          ),
+      ],
     );
   }
-}
+

@@ -19,7 +19,7 @@ class _CreateAnnouncementState extends State<CreateAnnouncement> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: app_bar(titilee: 'Create Announcemet'),
+      appBar: app_bar(context,'Create Announcement',true,'notification',true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(

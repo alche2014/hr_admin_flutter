@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Pg1_Signin.dart';
-import 'package:hr_admin/HR_app/Screens/Settings/body.dart';
-import 'package:hr_admin/HR_app/Screens/navigationbar.dart';
 import 'package:hr_admin/HR_app/Theme.dart';
+import 'package:hr_admin/HR_app/constants.dart';
 
 void main() {
   runApp(MyApp());

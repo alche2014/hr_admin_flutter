@@ -15,10 +15,7 @@ class _CreateLocationState extends State<CreateLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Create Location',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context, 'Create Location', true, 'tune', true),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.89,
@@ -53,13 +50,12 @@ class _CreateLocationState extends State<CreateLocation> {
                   SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
-                      // labelStyle: TextStyle(fontSize: 20),
-
+                      labelText: 'Address',
+                      labelStyle: TextStyle(color: Colors.grey),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                      hintText: 'Address',
-                      suffixIcon: Icon(Icons.location_pin, color: kPrimaryColor),
-                      hintStyle: TextStyle(color: Colors.grey),
+                      suffixIcon:
+                          Icon(Icons.location_pin, color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide:

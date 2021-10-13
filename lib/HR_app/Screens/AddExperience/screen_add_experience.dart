@@ -6,7 +6,7 @@ class AddExperience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Add Experience'),
+      appBar: app_bar(context,'Add Experience',true,'notification',true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),

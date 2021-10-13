@@ -7,7 +7,7 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'About'),
+      appBar: app_bar(context,'About',true,'notification',true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

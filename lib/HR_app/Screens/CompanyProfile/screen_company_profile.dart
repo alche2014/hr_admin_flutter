@@ -6,7 +6,7 @@ class Company_Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Company Profile'),
+      appBar: app_bar(context,'Company Profile',true,'notification',true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),

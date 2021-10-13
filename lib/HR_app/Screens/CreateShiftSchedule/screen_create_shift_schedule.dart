@@ -22,10 +22,7 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: app_bar(
-        titilee: 'Create Shift Schedule',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context,'Create Shift Schedule',true,'Tune',true),
       body: Form(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

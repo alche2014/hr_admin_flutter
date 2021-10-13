@@ -26,7 +26,7 @@ class _CreateLeavePolicyState extends State<CreateLeavePolicy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(titilee: 'Create Leave Policy'),
+      appBar: app_bar(context,'Create Leave Policy',true,'notification',true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),

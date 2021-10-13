@@ -9,10 +9,7 @@ class LeavePolicies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Leave Policies',
-        myicon: 'tune',
-      ),
+      appBar: app_bar(context,'Leave Policies',true,'tune',true),
       body: ListView.builder(
         itemCount: myPolicies.length,
         itemBuilder: (_, index) {

@@ -14,9 +14,7 @@ class _SkillsState extends State<Skills> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar(
-        titilee: 'Skills',
-      ),
+      appBar: app_bar(context,'Skills',true,'notification',true),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.89,

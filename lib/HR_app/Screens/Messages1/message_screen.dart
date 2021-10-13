@@ -33,7 +33,7 @@ class MessagesScreen extends StatelessWidget with ChangeNotifier {
             children: [
               Text(
                 'Full Stack Designers',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16,overflow: TextOverflow.ellipsis),
               ),
               Text(
                 '7 Online, form 12 people',
