@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum Gender { Male, Female, Both }
 
@@ -12,6 +17,36 @@ class Personal_Info_Form extends StatefulWidget {
 
 // ignore: camel_case_types
 class _Personal_Info_FormState extends State<Personal_Info_Form> {
+  File image;
+  String imagePath;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      File imageTemp = File(image.path);
+
+      setState(() {
+        this.image = imageTemp;
+        saveImage(image.path);
+        loadImage();
+        // saveImage(this.image);
+      });
+    } on PlatformException catch (e) {
+      print('Access Rejected: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+    loadImage();
+    print('hello');
+  }
+
   var _gender;
   var _dropdownValue;
   var _dropdownValue1;
@@ -32,8 +67,8 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
         children: [
 //----------------------image-------------------
           CircularPercentIndicator(
-            radius: 87,
-            lineWidth: 3,
+            radius: 107,
+            lineWidth: 5,
             backgroundColor: Colors.white,
             percent: 0.50,
             progressColor: kPrimaryColor,
@@ -41,25 +76,66 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             animation: true,
             center: Stack(
               children: [
-                CircleAvatar(
-                  radius: 40,
-                  child: ClipRRect(
-                    clipBehavior: Clip.antiAlias,
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(
-                      image: AssetImage('assets/images/user1.png'),
-                      width: 90,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                imagePath != null
+                ?CircleAvatar(
+                        radius: 50,
+                        child: ClipRRect(
+                          clipBehavior: Clip.antiAlias,
+                          borderRadius: BorderRadius.circular(100),
+                          child:Image(
+                               image: FileImage(File(imagePath)),
+                            height: 114,
+                            width: 115,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+        
+                    : CircleAvatar(
+                        radius: 50,
+                        child: ClipRRect(
+                          clipBehavior: Clip.antiAlias,
+                          borderRadius: BorderRadius.circular(100),
+                          child: image != null
+                              ? Image.file(image)
+                              : Image.asset("assets/images/user.png",
+                            height: 114,
+                            width: 115,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: Image(
-                    image: AssetImage('assets/images/Vector.png'),
-                    width: 20,
-                    fit: BoxFit.cover,
+                  child: InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext bc) {
+                            return Container(
+                              child: new Wrap(
+                                children: <Widget>[
+                                  new ListTile(
+                                      leading: new Icon(Icons.image),
+                                      title: new Text('Gallery'),
+                                      onTap: () {
+                                        setState(() {
+                                          Navigator.pop(context);
+                                          pickImage();
+                                        });
+                                      }),
+                                ],
+                              ),
+                            );
+                          });
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/Vector.png'),
+                      height: 25,
+                      width: 25,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -67,7 +143,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                   right: 3,
                   child: Icon(
                     Icons.edit_outlined,
-                    size: 15,
+                    size: 18,
                     color: Colors.white,
                   ),
                 ),
@@ -372,5 +448,17 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
         ],
       ),
     );
+  }
+
+  void saveImage(path) async {
+    SharedPreferences saveimage = await SharedPreferences.getInstance();
+    saveimage.setString('saveImage', path);
+  }
+
+  void loadImage() async {
+    SharedPreferences loadimage = await SharedPreferences.getInstance();
+    setState(() {
+      imagePath = loadimage.getString('saveImage');
+    });
   }
 }

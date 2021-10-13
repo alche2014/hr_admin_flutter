@@ -11,16 +11,17 @@ const kErrorColor = Color(0xFFF03738);
 
 const kDefaultPadding = 20.0;
 
-Future setdata(String key, String value) async {
-  SharedPreferences preferences = await SharedPreferences.getInstance();
-  preferences.setString(key, value);
-}
 
-Future<String> getdata(String key) async {
-  SharedPreferences preferences = await SharedPreferences.getInstance();
-  return preferences.getString(key) ?? "";
-  // return data;
-}
+// Future setdata(String key, String value) async {
+//   SharedPreferences preferences = await SharedPreferences.getInstance();
+//   preferences.setString(key, value);
+// }
+
+// Future<String> getdata(String key) async {
+//   SharedPreferences preferences = await SharedPreferences.getInstance();
+//   return preferences.getString(key) ?? "";
+//   // return data;
+// }
 
 var phonemask = new MaskTextInputFormatter(mask: '+92 ### #######');
 var cnicemask = new MaskTextInputFormatter(mask: '#####-#######-#');
@@ -29,7 +30,7 @@ var cnicemask = new MaskTextInputFormatter(mask: '#####-#######-#');
 InputDecoration TextFieldDecoration(String hint) {
   return InputDecoration(
     // labelStyle: TextStyle(fontSize: 20),
-    
+
     contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
     hintText: hint,
     hintStyle: TextStyle(color: Colors.grey),

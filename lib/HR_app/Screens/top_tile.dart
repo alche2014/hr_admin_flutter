@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
