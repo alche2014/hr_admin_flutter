@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Messages1/components/AudioMessage.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/ImageMessage.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/TextMessage.dart';
 import 'package:hr_admin/HR_app/Screens/Messages1/components/model.dart';
@@ -18,6 +19,9 @@ class Messages extends StatelessWidget {
         case ChatMessageType.image:
           return ImageMessage(message: message);
           break;
+        case ChatMessageType.audio:
+          return AudioMessage(message: message);
+          break;  
         default:
           return SizedBox();
       }

@@ -32,36 +32,36 @@ class FormTopTile extends StatelessWidget {
                 animation: true,
                 center: Stack(
                   children: [
-                    imagePath != null
-                ?CircleAvatar(
-                        radius: 40,
-                        child: ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child:Image(
-                               image: FileImage(File(imagePath)),
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      )
+                //     imagePath != null
+                // ?CircleAvatar(
+                //         radius: 40,
+                //         child: ClipRRect(
+                //           clipBehavior: Clip.antiAlias,
+                //           borderRadius: BorderRadius.circular(100),
+                //           child:Image(
+                //                image: FileImage(File(imagePath)),
+                //             height: 100,
+                //             width: 100,
+                //             fit: BoxFit.cover,
+                //           ),
+                //         ),
+                //       )
         
-                    : CircleAvatar(
-                        radius: 50,
-                        child: ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child: //image != null
-                              // ? Image.file(image)
-                              // : 
-                              Image.asset("assets/images/user.png",
-                            height: 114,
-                            width: 115,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                //     : CircleAvatar(
+                //         radius: 50,
+                //         child: ClipRRect(
+                //           clipBehavior: Clip.antiAlias,
+                //           borderRadius: BorderRadius.circular(100),
+                //           child: //image != null
+                //               // ? Image.file(image)
+                //               // : 
+                //               Image.asset("assets/images/user.png",
+                //             height: 114,
+                //             width: 115,
+                //             fit: BoxFit.cover,
+                //           ),
+                //         ),
+                //       ),
                     Positioned(
                       bottom: 0,
                       right: 0,

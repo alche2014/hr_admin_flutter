@@ -7,31 +7,44 @@ import 'package:image_picker/image_picker.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+void saveImage(path) async {
+  SharedPreferences saveimage = await SharedPreferences.getInstance();
+  saveimage.setString('saveImage', path);
+}
+
+Future<String> loadImage() async {
+  SharedPreferences loadimage = await SharedPreferences.getInstance();
+  // setState(() {
+  return loadimage.getString('saveImage');
+  // });
+}
+
 enum Gender { Male, Female, Both }
-String imagePath;
-// ignore: camel_case_types
+
 class Personal_Info_Form extends StatefulWidget {
   @override
   _Personal_Info_FormState createState() => _Personal_Info_FormState();
 }
 
-// ignore: camel_case_types
 class _Personal_Info_FormState extends State<Personal_Info_Form> {
   File image;
-  
-
+  String _imagePath;
+//------------imagepicker----------------
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
 
-      File imageTemp = File(image.path);
+      // File imageTemp = File(image.path);
 
+      saveImage(image.path);
       setState(() {
-        this.image = imageTemp;
-        saveImage(image.path);
-        loadImage();
-        // saveImage(this.image);
+        print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
+        print(image.path.toString());
+        _imagePath = image.path;
+        // print(_imagePath);
+        print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
+        saveImage(this.image);
       });
     } on PlatformException catch (e) {
       print('Access Rejected: $e');
@@ -59,6 +72,7 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
   TextEditingController _controller7 = new TextEditingController();
   TextEditingController _controller8 = new TextEditingController();
   TextEditingController _controller9 = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -76,21 +90,20 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
             animation: true,
             center: Stack(
               children: [
-                imagePath != null
-                ?CircleAvatar(
+                _imagePath != null
+                    ? CircleAvatar(
                         radius: 50,
                         child: ClipRRect(
                           clipBehavior: Clip.antiAlias,
                           borderRadius: BorderRadius.circular(100),
-                          child:Image(
-                               image: FileImage(File(imagePath)),
+                          child: Image(
+                            image: FileImage(File(_imagePath)),
                             height: 114,
                             width: 115,
                             fit: BoxFit.cover,
                           ),
                         ),
                       )
-        
                     : CircleAvatar(
                         radius: 50,
                         child: ClipRRect(
@@ -98,11 +111,12 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                           borderRadius: BorderRadius.circular(100),
                           child: image != null
                               ? Image.file(image)
-                              : Image.asset("assets/images/user.png",
-                            height: 114,
-                            width: 115,
-                            fit: BoxFit.cover,
-                          ),
+                              : Image.asset(
+                                  "assets/images/user.png",
+                                  height: 114,
+                                  width: 115,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
                 Positioned(
@@ -448,17 +462,5 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
         ],
       ),
     );
-  }
-
-  void saveImage(path) async {
-    SharedPreferences saveimage = await SharedPreferences.getInstance();
-    saveimage.setString('saveImage', path);
-  }
-
-  void loadImage() async {
-    SharedPreferences loadimage = await SharedPreferences.getInstance();
-    setState(() {
-      imagePath = loadimage.getString('saveImage');
-    });
   }
 }

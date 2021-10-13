@@ -16,6 +16,9 @@ class ChatInputField extends StatefulWidget {
 
 class _ChatInputFieldState extends State<ChatInputField> {
   File _image;
+  TextEditingController _controller = new TextEditingController();
+  bool istyping = false;
+
   Future getimage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) return;
@@ -27,9 +30,6 @@ class _ChatInputFieldState extends State<ChatInputField> {
       Navigator.pop(context);
     });
   }
-
-  TextEditingController _controller = new TextEditingController();
-  bool istyping = false;
 
   addmsg(String text) {
     myMsg.add(new MyMessage(
@@ -48,6 +48,15 @@ class _ChatInputFieldState extends State<ChatInputField> {
       date: DateTime.now(),
       image: image,
       messageType: ChatMessageType.image,
+    ));
+  }
+
+  addaudio() {
+    myMsg.add(new MyMessage(
+      name: 'ali',
+      issender: true,
+      date: DateTime.now(),
+      messageType: ChatMessageType.audio,
     ));
   }
 
@@ -167,7 +176,12 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       child: IconButton(
                         icon: Icon(Icons.mic),
                         color: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          MessagesScreen.length.value += 1;
+                          setState(() {
+                            addaudio();
+                          });
+                        },
                       ),
                     ),
                 ],

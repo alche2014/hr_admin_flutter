@@ -66,33 +66,34 @@ class _SettingsState extends State<Settings> {
                   margin: EdgeInsets.all(5),
                   child: Row(
                     children: [
-                      imagePath != null
-                          ? CircleAvatar(
-                              radius: 50,
-                              child: ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.circular(100),
-                                child: Image(
-                                  image: FileImage(File(imagePath)),
-                                  height: 114,
-                                  width: 115,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            )
-                          : CircleAvatar(
-                              radius: 50,
-                              child: ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.circular(100),
-                                child: Image.asset(
-                                  "assets/images/user.png",
-                                  height: 114,
-                                  width: 115,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
+                      FutureBuilder(builder: )
+                      // imagePath != null
+                      //     ? CircleAvatar(
+                      //         radius: 50,
+                      //         child: ClipRRect(
+                      //           clipBehavior: Clip.antiAlias,
+                      //           borderRadius: BorderRadius.circular(100),
+                      //           child: Image(
+                      //             image: FileImage(File(imagePath)),
+                      //             height: 114,
+                      //             width: 115,
+                      //             fit: BoxFit.cover,
+                      //           ),
+                      //         ),
+                      //       )
+                      //     : CircleAvatar(
+                      //         radius: 50,
+                      //         child: ClipRRect(
+                      //           clipBehavior: Clip.antiAlias,
+                      //           borderRadius: BorderRadius.circular(100),
+                      //           child: Image.asset(
+                      //             "assets/images/user.png",
+                      //             height: 114,
+                      //             width: 115,
+                      //             fit: BoxFit.cover,
+                      //           ),
+                      //         ),
+                      //       ),
                       SizedBox(width: 10),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.5,
