@@ -1,6 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/Screens/Personal_Information/form.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -20,8 +23,8 @@ class FormTopTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CircularPercentIndicator(
-                radius: 87,
-                lineWidth: 3,
+                radius: 88,
+                lineWidth: 5,
                 backgroundColor: Colors.white,
                 percent: 0.50,
                 progressColor: kPrimaryColor,
@@ -29,18 +32,36 @@ class FormTopTile extends StatelessWidget {
                 animation: true,
                 center: Stack(
                   children: [
-                    CircleAvatar(
-                      radius: 40,
-                      child: ClipRRect(
-                        clipBehavior: Clip.antiAlias,
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image(
-                          image: AssetImage('assets/images/user1.png'),
-                          width: 90,
-                          fit: BoxFit.cover,
+                    imagePath != null
+                ?CircleAvatar(
+                        radius: 40,
+                        child: ClipRRect(
+                          clipBehavior: Clip.antiAlias,
+                          borderRadius: BorderRadius.circular(100),
+                          child:Image(
+                               image: FileImage(File(imagePath)),
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+        
+                    : CircleAvatar(
+                        radius: 50,
+                        child: ClipRRect(
+                          clipBehavior: Clip.antiAlias,
+                          borderRadius: BorderRadius.circular(100),
+                          child: //image != null
+                              // ? Image.file(image)
+                              // : 
+                              Image.asset("assets/images/user.png",
+                            height: 114,
+                            width: 115,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
                     Positioned(
                       bottom: 0,
                       right: 0,

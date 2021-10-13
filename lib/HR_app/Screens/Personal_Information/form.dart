@@ -8,7 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum Gender { Male, Female, Both }
-
+String imagePath;
 // ignore: camel_case_types
 class Personal_Info_Form extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class Personal_Info_Form extends StatefulWidget {
 // ignore: camel_case_types
 class _Personal_Info_FormState extends State<Personal_Info_Form> {
   File image;
-  String imagePath;
+  
 
   Future pickImage() async {
     try {

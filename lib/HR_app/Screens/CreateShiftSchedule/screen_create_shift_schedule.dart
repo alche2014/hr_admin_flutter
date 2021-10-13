@@ -16,8 +16,8 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
   var _dropdownValue;
   var _iscchecked = false;
   var _latemark;
-  var _date1;
-  var _date2;
+  var _time1;
+  var _time2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,25 +184,24 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                _date1 != null
-                                    ? DateFormat.yMd().format(_date1).toString()
+                                _time1 != null
+                                    ? _time1.toString()
                                     : 'Check in',
                                 style: TextStyle(
-                                    color: _date1 != null
+                                    color: _time1 != null
                                         ? Colors.black
                                         : Colors.grey),
                               ),
                               IconButton(
                                 icon: Icon(Icons.today),
                                 onPressed: () {
-                                  showDatePicker(
+                                  showTimePicker(
                                           context: context,
-                                          initialDate: DateTime(2005),
-                                          firstDate: DateTime(2000),
-                                          lastDate: DateTime.now())
+                                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                                          )
                                       .then((value) {
                                     setState(() {
-                                      _date1 = value;
+                                      _time1 = value.format(context);
                                     });
                                   });
                                 },
@@ -225,25 +224,24 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                _date2 != null
-                                    ? DateFormat.yMd().format(_date2).toString()
+                                _time2 != null
+                                    ? _time2.toString()
                                     : 'Check out',
                                 style: TextStyle(
-                                    color: _date2 != null
+                                    color: _time2 != null
                                         ? Colors.black
                                         : Colors.grey),
                               ),
                               IconButton(
                                 icon: Icon(Icons.today),
                                 onPressed: () {
-                                  showDatePicker(
+                                  showTimePicker(
                                           context: context,
-                                          initialDate: DateTime(2005),
-                                          firstDate: DateTime(2000),
-                                          lastDate: DateTime.now())
+                                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                                          )
                                       .then((value) {
                                     setState(() {
-                                      _date2 = value;
+                                      _time2 = value.format(context);
                                     });
                                   });
                                 },
@@ -265,8 +263,8 @@ class _CreateShiftScheduleState extends State<CreateShiftSchedule> {
                         _controller2.text.isNotEmpty &&
                         _dropdownValue != null &&
                         _latemark != null &&
-                        _date1 != null &&
-                        _date2 != null) {
+                        _time1 != null &&
+                        _time2 != null) {
                       Navigator.pop(context);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(

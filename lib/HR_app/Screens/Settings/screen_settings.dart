@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/About_app/screen_about_app.dart';
 import 'package:hr_admin/HR_app/Screens/CompanyProfile/screen_company_profile.dart';
@@ -5,6 +7,7 @@ import 'package:hr_admin/HR_app/Screens/Departments/screen_departmennts.dart';
 import 'package:hr_admin/HR_app/Screens/LeavePolicies/screen_leave_policies.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.dart';
+import 'package:hr_admin/HR_app/Screens/Personal_Information/form.dart';
 import 'package:hr_admin/HR_app/Screens/Privacy_app%20copy/screen_Privacy_app.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 import 'package:hr_admin/HR_app/constants.dart';
@@ -63,18 +66,33 @@ class _SettingsState extends State<Settings> {
                   margin: EdgeInsets.all(5),
                   child: Row(
                     children: [
-                      CircleAvatar(
-                        radius: 40,
-                        child: ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image(
-                            image: AssetImage('assets/images/user1.png'),
-                            width: 90,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                      imagePath != null
+                          ? CircleAvatar(
+                              radius: 50,
+                              child: ClipRRect(
+                                clipBehavior: Clip.antiAlias,
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image(
+                                  image: FileImage(File(imagePath)),
+                                  height: 114,
+                                  width: 115,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : CircleAvatar(
+                              radius: 50,
+                              child: ClipRRect(
+                                clipBehavior: Clip.antiAlias,
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.asset(
+                                  "assets/images/user.png",
+                                  height: 114,
+                                  width: 115,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
                       SizedBox(width: 10),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.5,
