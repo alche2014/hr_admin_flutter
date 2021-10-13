@@ -6,7 +6,7 @@ import 'package:hr_admin/HR_app/Screens/Requests/screen_requests.dart';
 import 'package:hr_admin/HR_app/Screens/top_tile.dart';
 
 // ignore: must_be_immutable
-class Employes extends StatelessWidget {
+class Employee extends StatelessWidget {
   String text1 = 'Personal Information';
   String text2 = 'Attendence';
   String text3 = 'Requests';

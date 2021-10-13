@@ -12,7 +12,8 @@ class Employes1 extends StatelessWidget {
 //-----------------------Appbar--------------------
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Employee'),
+        title: Text('Employes'),
+        backgroundColor: kPrimaryColor,
         actions: <Widget>[
           IconButton(
             icon: Icon(

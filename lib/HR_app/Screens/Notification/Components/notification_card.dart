@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/Components/models.dart';
+import 'package:hr_admin/main.dart';
 
 class NotificationCard extends StatelessWidget {
   NotificationCard({this.model});
@@ -9,8 +10,7 @@ class NotificationCard extends StatelessWidget {
     return Material(
       elevation: 3,
       borderRadius: BorderRadius.circular(10),
-      color: MediaQuery.of(context).platformBrightness ==
-                        Brightness.light
+      color: MyApp.isdarkmode.value != true
                     ? Colors.white
                     : Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
       child: InkWell(

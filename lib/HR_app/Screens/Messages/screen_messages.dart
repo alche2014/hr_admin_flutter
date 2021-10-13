@@ -24,6 +24,7 @@ class _MessagesState extends State<Messages>
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('Messages'),
+        backgroundColor: kPrimaryColor,
         actions: [
           IconButton(
             onPressed: () {},

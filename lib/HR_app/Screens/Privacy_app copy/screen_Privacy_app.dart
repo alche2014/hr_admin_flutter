@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/constants.dart';
 
 class PrivacyApp extends StatelessWidget {
   @override
@@ -6,6 +7,7 @@ class PrivacyApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Privacy'),
+        backgroundColor: kPrimaryColor,
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

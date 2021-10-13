@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/Screens/Employee/components/model.dart';
 import 'package:hr_admin/HR_app/Screens/Employes/screen_employes.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:hr_admin/main.dart';
 
 class EmployeeCard extends StatelessWidget {
   EmployeeCard({this.model});
@@ -17,14 +18,14 @@ class EmployeeCard extends StatelessWidget {
       child: Material(
         elevation: 1,
         borderRadius: BorderRadius.circular(10),
-        color: MediaQuery.of(context).platformBrightness == Brightness.light
+        color: MyApp.isdarkmode.value != true
             ? Colors.white
             : kContentColorLightTheme.withOpacity(0.1),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Employes()));
+                MaterialPageRoute(builder: (context) => Employee()));
           },
           child: ListTile(
             leading: Material(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr_admin/HR_app/constants.dart';
 
 class AboutApp extends StatelessWidget {
   @override
@@ -6,6 +7,7 @@ class AboutApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('About'),
+        backgroundColor: kPrimaryColor,
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
