@@ -7,12 +7,29 @@ import 'package:hr_admin/HR_app/Screens/Personal_Information/form.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class FormTopTile extends StatelessWidget {
+class FormTopTile extends StatefulWidget {
   bool trailing_edit;
   var press;
+
   FormTopTile({this.press, this.trailing_edit});
 
   @override
+  State<FormTopTile> createState() => _FormTopTileState();
+}
+
+class _FormTopTileState extends State<FormTopTile> {
+  // String _imagePath;
+
+  @override
+  // void initState() {
+  //   super.initState();
+  //   loadImage().then((value) {
+  //     setState(() {
+  //       _imagePath = value;
+  //     });
+  //   });
+  // }
+
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(5),
@@ -22,66 +39,75 @@ class FormTopTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CircularPercentIndicator(
-                radius: 88,
-                lineWidth: 5,
-                backgroundColor: Colors.white,
-                percent: 0.50,
-                progressColor: kPrimaryColor,
-                circularStrokeCap: CircularStrokeCap.round,
-                animation: true,
-                center: Stack(
-                  children: [
-                //     imagePath != null
-                // ?CircleAvatar(
-                //         radius: 40,
-                //         child: ClipRRect(
-                //           clipBehavior: Clip.antiAlias,
-                //           borderRadius: BorderRadius.circular(100),
-                //           child:Image(
-                //                image: FileImage(File(imagePath)),
-                //             height: 100,
-                //             width: 100,
-                //             fit: BoxFit.cover,
-                //           ),
-                //         ),
-                //       )
-        
-                //     : CircleAvatar(
-                //         radius: 50,
-                //         child: ClipRRect(
-                //           clipBehavior: Clip.antiAlias,
-                //           borderRadius: BorderRadius.circular(100),
-                //           child: //image != null
-                //               // ? Image.file(image)
-                //               // : 
-                //               Image.asset("assets/images/user.png",
-                //             height: 114,
-                //             width: 115,
-                //             fit: BoxFit.cover,
-                //           ),
-                //         ),
-                //       ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Image(
-                        image: AssetImage('assets/images/Vector.png'),
-                        width: 20,
-                        fit: BoxFit.cover,
-                      ),
+              FutureBuilder(
+                // initialData: CircularProgressIndicator(),
+                future: loadImage(),
+
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  print('yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoy');
+                  print(snapshot.toString());
+                  return CircularPercentIndicator(
+                    radius: 88,
+                    lineWidth: 5,
+                    backgroundColor: Colors.white,
+                    percent: 0.50,
+                    progressColor: kPrimaryColor,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    animation: true,
+                    center: Stack(
+                      children: [
+                        snapshot.hasData
+                            ? CircleAvatar(
+                                radius: 40,
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image(
+                                    image: FileImage(File(snapshot.data)),
+                                    height: 100,
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              )
+                            : CircleAvatar(
+                                radius: 50,
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: //image != null
+                                      // ? Image.file(image)
+                                      // :
+                                      Image.asset(
+                                    "assets/images/user.png",
+                                    height: 114,
+                                    width: 115,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Image(
+                            image: AssetImage('assets/images/Vector.png'),
+                            width: 20,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 3,
+                          right: 3,
+                          child: Icon(
+                            Icons.done,
+                            size: 15,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
-                    Positioned(
-                      bottom: 3,
-                      right: 3,
-                      child: Icon(
-                        Icons.done,
-                        size: 15,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               ),
               SizedBox(width: 10),
               Column(
@@ -106,7 +132,7 @@ class FormTopTile extends StatelessWidget {
               ),
             ],
           ),
-          if (trailing_edit == true)
+          if (widget.trailing_edit == true)
             Material(
               color: Colors.transparent,
               child: InkWell(
@@ -115,10 +141,8 @@ class FormTopTile extends StatelessWidget {
                 // highlightColor: kPrimaryColor,
                 // hoverColor: Colors.grey,autofocus: true,splashColor: Colors.white,
                 onTap: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => press));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => widget.press));
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -135,7 +159,7 @@ class FormTopTile extends StatelessWidget {
                 ),
               ),
             ),
-          if (trailing_edit == false)
+          if (widget.trailing_edit == false)
             Container(
               height: 10,
               width: 10,

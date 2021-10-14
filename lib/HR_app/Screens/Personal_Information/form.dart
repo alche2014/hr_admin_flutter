@@ -39,12 +39,12 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
 
       saveImage(image.path);
       setState(() {
-        print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
-        print(image.path.toString());
+        // print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
+        // print(image.path.toString());
         _imagePath = image.path;
         // print(_imagePath);
-        print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
-        saveImage(this.image);
+        // print('yoyoyoyooyoyooyoyoyoyoyoyoyoyoy');
+        // saveImage(this.image);
       });
     } on PlatformException catch (e) {
       print('Access Rejected: $e');
@@ -53,11 +53,12 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
 
   @override
   void initState() {
-    // TODO: implement initState
-
     super.initState();
-    loadImage();
-    print('hello');
+    loadImage().then((value) {
+      setState(() {
+        _imagePath = value;
+      });
+    });
   }
 
   var _gender;
@@ -73,77 +74,76 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
   TextEditingController _controller8 = new TextEditingController();
   TextEditingController _controller9 = new TextEditingController();
 
-  @override
   Widget build(BuildContext context) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
 //----------------------image-------------------
-          CircularPercentIndicator(
-            radius: 107,
-            lineWidth: 5,
-            backgroundColor: Colors.white,
-            percent: 0.50,
-            progressColor: kPrimaryColor,
-            circularStrokeCap: CircularStrokeCap.round,
-            animation: true,
-            center: Stack(
-              children: [
-                _imagePath != null
-                    ? CircleAvatar(
-                        radius: 50,
-                        child: ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image(
-                            image: FileImage(File(_imagePath)),
-                            height: 114,
-                            width: 115,
-                            fit: BoxFit.cover,
+          InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext bc) {
+                    return Container(
+                      child: new Wrap(
+                        children: <Widget>[
+                          new ListTile(
+                              leading: new Icon(Icons.image),
+                              title: new Text('Gallery'),
+                              onTap: () {
+                                setState(() {
+                                  Navigator.pop(context);
+                                  pickImage();
+                                });
+                              }),
+                        ],
+                      ),
+                    );
+                  });
+            },
+            child: CircularPercentIndicator(
+              radius: 107,
+              lineWidth: 5,
+              backgroundColor: Colors.white,
+              percent: 0.50,
+              progressColor: kPrimaryColor,
+              circularStrokeCap: CircularStrokeCap.round,
+              animation: true,
+              center: Stack(
+                children: [
+                  _imagePath != null
+                      ? CircleAvatar(
+                          radius: 50,
+                          child: ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image(
+                              image: FileImage(File(_imagePath)),
+                              height: 114,
+                              width: 115,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 50,
+                          child: ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.circular(100),
+                            child: image != null
+                                ? Image.file(image)
+                                : Image.asset(
+                                    "assets/images/user.png",
+                                    height: 114,
+                                    width: 115,
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
-                      )
-                    : CircleAvatar(
-                        radius: 50,
-                        child: ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child: image != null
-                              ? Image.file(image)
-                              : Image.asset(
-                                  "assets/images/user.png",
-                                  height: 114,
-                                  width: 115,
-                                  fit: BoxFit.cover,
-                                ),
-                        ),
-                      ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext bc) {
-                            return Container(
-                              child: new Wrap(
-                                children: <Widget>[
-                                  new ListTile(
-                                      leading: new Icon(Icons.image),
-                                      title: new Text('Gallery'),
-                                      onTap: () {
-                                        setState(() {
-                                          Navigator.pop(context);
-                                          pickImage();
-                                        });
-                                      }),
-                                ],
-                              ),
-                            );
-                          });
-                    },
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
                     child: Image(
                       image: AssetImage('assets/images/Vector.png'),
                       height: 25,
@@ -151,17 +151,17 @@ class _Personal_Info_FormState extends State<Personal_Info_Form> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 3,
-                  right: 3,
-                  child: Icon(
-                    Icons.edit_outlined,
-                    size: 18,
-                    color: Colors.white,
+                  Positioned(
+                    bottom: 3,
+                    right: 3,
+                    child: Icon(
+                      Icons.edit_outlined,
+                      size: 18,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(height: 30),

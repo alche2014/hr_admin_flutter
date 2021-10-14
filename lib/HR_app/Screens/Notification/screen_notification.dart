@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/Components/models.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/Components/notification_card.dart';
+import 'package:hr_admin/HR_app/constants.dart';
 import 'package:intl/intl.dart';
 
 class Notifications extends StatelessWidget {
@@ -12,6 +13,7 @@ class Notifications extends StatelessWidget {
         title: Text(
           'Notifications',
         ),
+        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

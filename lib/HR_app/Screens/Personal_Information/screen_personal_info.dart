@@ -12,13 +12,13 @@ class Personal_Information extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text('Personal Information'),
-        leading: new IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
-            },
-            icon: Icon(Icons.arrow_back)),
+        // leading: new IconButton(
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //       // Navigator.pushReplacement(
+        //       //     context, MaterialPageRoute(builder: (context) => Profile()));
+        //     },
+            // icon: Icon(Icons.arrow_back)),
         actions: [
           IconButton(
             icon: Icon(
