@@ -39,14 +39,14 @@ class _FormTopTileState extends State<FormTopTile> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              FutureBuilder(
+              FutureBuilder (
                 // initialData: CircularProgressIndicator(),
                 future: loadImage(),
-
+                
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  print('yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoy');
                   print(snapshot.toString());
-                  return CircularPercentIndicator(
+                  return 
+                  CircularPercentIndicator(
                     radius: 88,
                     lineWidth: 5,
                     backgroundColor: Colors.white,
@@ -114,6 +114,7 @@ class _FormTopTileState extends State<FormTopTile> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  
                   Text(
                     'Name hare',
                     style: TextStyle(
