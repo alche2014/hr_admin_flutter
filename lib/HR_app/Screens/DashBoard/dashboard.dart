@@ -5,12 +5,12 @@ import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class Home extends StatefulWidget {
+class DashBoard extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _DashBoardState createState() => _DashBoardState();
 }
 
-class _HomeState extends State<Home> {
+class _DashBoardState extends State<DashBoard> {
   var dropdownValue;
   var size;
 
