@@ -52,40 +52,6 @@ class SlidabldWidget extends StatelessWidget {
             // onTap:,
           ),
         ),
-        Theme(
-          data: Theme.of(context).copyWith(
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-          ),
-          child: IconSlideAction(
-            iconWidget: Material(
-              elevation: 3,
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(100),
-              child: InkWell(
-                splashColor: Colors.grey,
-                radius: 30,
-                highlightColor: Colors.grey.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(100),
-                onTap: () {},
-                child: Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Icon(
-                    Icons.delete_forever_outlined,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            // icon: Icons.delete_forever_rounded,
-            // onTap: () {},
-          ),
-        ),
       ],
     );
   }

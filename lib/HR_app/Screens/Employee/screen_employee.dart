@@ -36,20 +36,10 @@ class Employes1 extends StatelessWidget {
         ],
       ),
 
-      body: ListView(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey, width: 1),
-            ),
-            child: ExpansionTile(
-              title: Text('Ecom Team'),
-              children: [
+      body: 
                 ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  // shrinkWrap: true,
+                  // physics: NeverScrollableScrollPhysics(),
                   itemCount: myEmployee.length,
                   itemBuilder: (_, index) {
                     return SlidabldWidget(
@@ -58,57 +48,7 @@ class Employes1 extends StatelessWidget {
                     );
                   },
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey, width: 1),
-            ),
-            child: ExpansionTile(
-              title: Text('Ecom Team'),
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: myEmployee.length,
-                  itemBuilder: (_, index) {
-                    return SlidabldWidget(
-                      index: index,
-                      model: myEmployee,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey, width: 1),
-            ),
-            child: ExpansionTile(
-              title: Text('Ecom Team'),
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: myEmployee.length,
-                  itemBuilder: (_, index) {
-                    return SlidabldWidget(
-                      index: index,
-                      model: myEmployee,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+              
       //-----------------Floating action button---------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {

@@ -40,36 +40,75 @@ class _DependentFormState extends State<DependentForm> {
               ),
               SizedBox(height: 10),
               //-----------------------DropDown-------------------
+
+              //    DropdownButtonFormField(
+              //   decoration: InputDecoration(
+              //       border: const OutlineInputBorder(
+              //         borderSide: BorderSide.none,
+              //         borderRadius: BorderRadius.all(
+              //           Radius.circular(10),
+              //         ),
+              //       ),
+              //       labelText: "Role",
+              //       labelStyle: TextStyle(fontSize: 12,color: Colors.grey),
+              //       filled: true,
+              //       fillColor: Colors.white),
+              //   value: _dropdownValue,
+              //   items: <String>['Destination', 'Software']
+              //       .map<DropdownMenuItem<String>>((String value) {
+              //     return DropdownMenuItem<String>(
+              //       value: value,
+              //       child: Text(value, style: TextStyle(fontSize: 12,color: Colors.grey),),
+              //     );
+              //   }).toList(),
+              //   onChanged: (value) {
+              //     setState(() {
+              //       _dropdownValue = value;
+              //     });
+              //   },
+              // ),
+
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                // padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.grey[300], width: 1)),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: _dropdownValue,
-                    style: TextStyle(color: Colors.black),
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    elevation: 0,
-                    isExpanded: true,
-                    hint: Text(
-                      'Relation',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _dropdownValue = newValue;
-                      });
+                child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                      ),
+                      labelText: "Role",
+                      labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
+                      filled: true,
+                      fillColor: Colors.white),
+                  value: _dropdownValue,
+                  items: <String>[
+                    'Brother',
+                    'Sister',
+                    'Father',
+                    'Mother',
+                    'Spouse',
+                    'Daughter',
+                    'Son',
+                  ].map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
                     },
-                    items: <String>['1', '2'].map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
-                  ),
+                  ).toList(),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      _dropdownValue = newValue;
+                    });
+                  },
                 ),
               ),
               SizedBox(height: 10),

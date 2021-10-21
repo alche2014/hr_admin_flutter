@@ -10,6 +10,7 @@ import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.da
 import 'package:hr_admin/HR_app/Screens/Personal_Information/form.dart';
 import 'package:hr_admin/HR_app/Screens/Privacy_app/screen_Privacy_app.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
+import 'package:hr_admin/HR_app/Screens/Skills1/screens.skills.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:hr_admin/main.dart';
 
@@ -318,6 +319,30 @@ class _SettingsState extends State<Settings> {
                               SizedBox(width: 5),
                               Text(
                                 'Leave Policy',
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Skills1()));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.circle,
+                                size: 15,
+                                color: kPrimaryColor,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Skills',
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 16),
                               ),
