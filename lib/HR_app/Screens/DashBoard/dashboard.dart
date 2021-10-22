@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:hr_admin/HR_app/Screens/DashBoard/model.dart';
 import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/constants.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -10,9 +14,84 @@ class DashBoard extends StatefulWidget {
   _DashBoardState createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _DashBoardState extends State<DashBoard>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  // Animation<Offset> _offsetAnimation;
+
+  // Card1 model = mycard1[i];
+  int i = 0;
   var dropdownValue;
   var size;
+  int totalET = 0;
+  int presentET = 0;
+  int absentET = 0;
+  double x = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    totalEmployeeTimer();
+    presentEmployeeTimer();
+    absentEmployeeTimer();
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 1000),
+      vsync: this,
+    );
+    _controller.forward();
+  }
+
+  Timer totalEmployeeTimer() {
+    Timer timer;
+    return timer = Timer.periodic(Duration(microseconds: 10), (_) {
+      // print('Percent Update');
+      setState(() {
+        if (totalET >= mycard1[i].totalEmployee) {
+          timer.cancel();
+          // percent=0;
+        } else {
+          totalET += 1;
+        }
+      });
+    });
+  }
+
+  Timer presentEmployeeTimer() {
+    Timer timer;
+    return timer = Timer.periodic(Duration(microseconds: 10), (_) {
+      // print('Percent Update');
+      setState(() {
+        if (presentET >= mycard1[i].present) {
+          timer.cancel();
+          // percent=0;
+        } else {
+          presentET += 1;
+        }
+      });
+    });
+  }
+
+  Timer absentEmployeeTimer() {
+    Timer timer;
+    return timer = Timer.periodic(Duration(microseconds: 10), (_) {
+      // print('Percent Update');
+      setState(() {
+        if (absentET >= mycard1[i].absent) {
+          timer.cancel();
+          // percent=0;
+        } else {
+          absentET += 1;
+        }
+      });
+    });
+  }
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,20 +151,86 @@ class _DashBoardState extends State<DashBoard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (i > 0) {
+                                  setState(() {
+                                    i--;
+                                    if (x >= 0) {
+                                      x -= x;
+                                      x -= 1;
+                                    }
+                                    ;
+                                    // y=0
+                                    _controller.forward(from: x);
+                                  });
+                                  totalET = 0;
+                                  presentET = 0;
+                                  absentET = 0;
+                                  totalEmployeeTimer();
+                                  presentEmployeeTimer();
+                                  absentEmployeeTimer();
+                                }
+                              },
                               icon: Icon(Icons.arrow_back),
                             ),
                           ),
-                          Text('Today, 12/05/2021'),
+                          Expanded(
+                            child: Container(
+                              // color: Colors.blue,
+                              child: Center(
+                                child: SlideTransition(
+                                  position: Tween<Offset>(
+                                          begin: Offset(x, 0), end: Offset.zero)
+                                      .animate(_controller),
+                                  child: mycard1[i]
+                                          .date
+                                          .isAtSameMomentAs(DateTime.now())
+                                      ? Text(
+                                          'Today ' +
+                                              DateFormat.yMd()
+                                                  .format(mycard1[i].date)
+                                                  .toString(),
+                                          // style: TextStyle(color: Colors.green),
+                                        )
+                                      : Text(
+                                          DateFormat.yMd()
+                                              .format(mycard1[i].date)
+                                              .toString(),
+                                          // style
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ),
                           Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (i < mycard1.length - 1) {
+                                  setState(() {
+                                    i++;
+                                    if (x <= 0) {
+                                      x -= x;
+                                      x += 1;
+                                    }
+                                    _controller.forward(from: 0);
+                                  });
+                                  totalET = 0;
+                                  presentET = 0;
+                                  absentET = 0;
+                                  totalEmployeeTimer();
+                                  presentEmployeeTimer();
+                                  absentEmployeeTimer();
+                                }
+                                // if (i < mycard1.length- 1) {
+
+                                // }
+                              },
                               icon: Icon(Icons.arrow_forward),
                             ),
                           ),
@@ -103,15 +248,34 @@ class _DashBoardState extends State<DashBoard> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              //--------------------------------------------------
+                              //             LiquidLinearProgressIndicator(
+                              //   value: percent / 100,
+                              //   valueColor: AlwaysStoppedAnimation(Colors.pink),
+                              //   backgroundColor: Colors.white,
+                              //   borderColor: Colors.red,
+                              //   borderWidth: 0,
+                              //   borderRadius: 15.0,
+                              //   direction: Axis.horizontal,
+                              //   center: Text(
+                              //     percent.toString(),
+                              //     style: TextStyle(
+                              //         fontSize: 12.0,
+                              //         fontWeight: FontWeight.w600,
+                              //         color: Colors.black),
+                              //   ),
+                              // ),
+                              //-------------------------------------------
                               Text(
-                                '174',
+                                totalET.toString(),
+                                // mycard1[i].totalEmployee.toString(),
                                 style: TextStyle(
                                     fontSize: 36,
                                     color: Color(0xFF555555),
                                     fontWeight: FontWeight.w600),
                               ),
                               Text(
-                                'Total Requests',
+                                'Total Employee',
                                 style: TextStyle(
                                     color: Color(0xFF555555),
                                     fontWeight: FontWeight.w500),
@@ -129,7 +293,9 @@ class _DashBoardState extends State<DashBoard> {
                                   width: 160,
                                   // width: MediaQuery.of(context).size.width * 0.9,
                                   lineHeight: 12,
-                                  percent: 0.25,
+                                  percent: ((mycard1[i].absent.toDouble() /
+                                          mycard1[i].totalEmployee.toDouble()))
+                                      .toDouble(),
                                   backgroundColor:
                                       Color(0XFF4CD3A3).withOpacity(.8),
                                   progressColor: kPrimaryColor,
@@ -150,7 +316,7 @@ class _DashBoardState extends State<DashBoard> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '86',
+                                            presentET.toString(),
                                             style: TextStyle(
                                                 color: Color(0xFF555555),
                                                 fontSize: 22),
@@ -165,7 +331,12 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '75%',
+                                        (mycard1[i].present /
+                                                    mycard1[i].totalEmployee *
+                                                    100)
+                                                .toInt()
+                                                .toString() +
+                                            "%",
                                         style:
                                             TextStyle(color: Color(0XFF4CD3A3)),
                                       )
@@ -181,13 +352,13 @@ class _DashBoardState extends State<DashBoard> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '86',
+                                            absentET.toString(),
                                             style: TextStyle(
                                                 color: Color(0xFF555555),
                                                 fontSize: 22),
                                           ),
                                           Text(
-                                            'Present',
+                                            'Absent',
                                             style: TextStyle(
                                                 color: Color(0xFF555555),
                                                 fontSize: 13),
@@ -196,7 +367,12 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '75%',
+                                        (mycard1[i].absent /
+                                                    mycard1[i].totalEmployee *
+                                                    100)
+                                                .toInt()
+                                                .toString() +
+                                            "%",
                                         style:
                                             TextStyle(color: Color(0XFF4CD3A3)),
                                       )

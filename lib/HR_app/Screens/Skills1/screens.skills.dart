@@ -42,8 +42,16 @@ class _Skills1State extends State<Skills1> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        if (_textcontroller.text.isNotEmpty)
+                        if (Chipmaker1.choosed1
+                            .contains(_textcontroller.text)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Already in List'),
+                            ),
+                          );
+                        } else if (_textcontroller.text.isNotEmpty) {
                           Chipmaker1.choosed1.add(_textcontroller.text);
+                        }
                       });
                       _textcontroller.clear();
                     },
@@ -86,7 +94,6 @@ class _Skills1State extends State<Skills1> {
                           content: Text('Add some Skills'),
                         ),
                       );
-                     
                   },
                   child: Text(
                     'Save',
