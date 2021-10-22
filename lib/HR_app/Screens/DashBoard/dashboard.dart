@@ -164,8 +164,6 @@ class _DashBoardState extends State<DashBoard>
                                       x -= x;
                                       x -= 1;
                                     }
-                                    ;
-                                    // y=0
                                     _controller.forward(from: x);
                                   });
                                   totalET = 0;
