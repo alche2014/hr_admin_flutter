@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
 
 class PrivacyApp extends StatefulWidget {
   @override
@@ -10,26 +8,67 @@ class PrivacyApp extends StatefulWidget {
 }
 
 class _PrivacyAppState extends State<PrivacyApp> {
-  void initState() {
-     super.initState();
-         // Enable hybrid composition.
- WebView.platform = SurfaceAndroidWebView();
-   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('About'),
+        title: Text('Privacy Policy'),
         backgroundColor: kPrimaryColor,
       ),
-      body: Builder(
-        builder: (context) {
-          return WebView(
-            initialUrl: 'https://www.alchemative.com/privacy-policy/',
-            javascriptMode: JavascriptMode.unrestricted,
-          );
-        }
-      ),
+      body: Builder(builder: (context) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                          child:
+                              Image.asset('assets/privacy.png', height: 108)),
+                      SizedBox(height: 20),
+                      //-----------------------------------------------------------//
+                      Text(header1,
+                          style: TextStyle(
+                              fontSize: 18, color: Color(0XFFC53B4B))),
+                      SizedBox(height: 20),
+                      Text(body1,
+                          style: TextStyle(
+                              fontSize: 13, color: Color(0XFF5B5B5B))),
+                      SizedBox(height: 40),
+                      //-----------------------------------------------------------//
+                      Text(header2,
+                          style: TextStyle(
+                              fontSize: 16, color: Color(0XFFC53B4B))),
+                      SizedBox(height: 20),
+                      Text(body2,
+                          style: TextStyle(
+                              fontSize: 13, color: Color(0XFF5B5B5B))),
+                    ]),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }
+
+String header1 = 'Privacy Policy of Alchemative (SMC-PVT) LTD';
+String body1 =
+    'Alchemative (SMC-PVT) LTD operates the www.alchemative.com website, which provides the SERVICE. This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the Alchemative Website website. If you choose to use our Service, then you agree to the collection and use of information in relation with this policy. The Personal Information that we collect are used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy. The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at www.alchemative.com, unless otherwise defined in this Privacy Policy. Our Privacy Policy was created with the help of the Privacy Policy Template and the Online Privacy Policy Template.';
+
+String header2 = 'Information Collection and Use';
+String body2 =
+    'For a better experience while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to your name, phone number, and postal address. The information that we collect will be used to contact or identify you.Log Data';
+
+String header3 = 'Service Providers';
+String body3 =
+    'We may employ third-party companies and individuals due to the following reasons: ';
+
+// To facilitate our Service
+// To provide the Service on our behalf;
+// To perform Service-related services; or
+// To assist us in analyzing how our Service is used.
