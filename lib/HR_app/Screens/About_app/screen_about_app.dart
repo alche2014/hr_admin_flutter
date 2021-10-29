@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -10,10 +9,11 @@ class AboutApp extends StatefulWidget {
 
 class _AboutAppState extends State<AboutApp> {
   void initState() {
-     super.initState();
-         // Enable hybrid composition.
- WebView.platform = SurfaceAndroidWebView();
-   }
+    super.initState();
+    // Enable hybrid composition.
+    WebView.platform = SurfaceAndroidWebView();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,57 +21,30 @@ class _AboutAppState extends State<AboutApp> {
         title: Text('About'),
         backgroundColor: kPrimaryColor,
       ),
-    //   body: Builder(builder: (BuildContext context) {
-    //     return WebView(
-    //       initialUrl: 'https://flutter.dev',
-    //       javascriptMode: JavascriptMode.unrestricted,
-    //       onWebViewCreated: (WebViewController webViewController) {
-    //         var _controller;
-    //         _controller.complete(webViewController);
-    //       },
-    //       onProgress: (int progress) {
-    //         print("WebView is loading (progress : $progress%)");
-    //       },
-    //       // javascriptChannels: <JavascriptChannel>{
-    //       //   _toasterJavascriptChannel(context),
-    //       // },
-    //       navigationDelegate: (NavigationRequest request) {
-    //         if (request.url.startsWith('https://www.youtube.com/')) {
-    //           print('blocking navigation to $request}');
-    //           return NavigationDecision.prevent;
-    //         }
-    //         print('allowing navigation to $request');
-    //         return NavigationDecision.navigate;
-    //       },
-    //       onPageStarted: (String url) {
-    //         print('Page started loading: $url');
-    //       },
-    //       onPageFinished: (String url) {
-    //         print('Page finished loading: $url');
-    //       },
-    //       gestureNavigationEnabled: true,
-    //     );
-    //   }),
-    //   // floatingActionButton: favoriteButton(),
-    // );
-      body: Builder(
-        builder: (context) {
-          return WebView(
-            initialUrl: 'https://www.alchemative.com/about-us/',
-            javascriptMode: JavascriptMode.unrestricted,
-          );
-        }
+      body: SingleChildScrollView(
+        child: Column(children: [
+          SizedBox(height: 20),
+          Center(child: Image.asset('assets/aboutimage.png', height: 198)),
+          SizedBox(height: 20),
+          //-----------------------------------------------------------//
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            Text(header, style: TextStyle(fontSize: 18, color: Color(0XFFC53B4B))),
+            SizedBox(height: 20),
+            Text(body, style: TextStyle(height: 1.5,fontSize: 13, color: Color(0XFF5B5B5B))),
+            SizedBox(height: 40),
+            ]),
+          ),
+          //-----------------------------------------------------------//
+        ]),
       ),
-      // body: Container(
-      //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(5),
-      //     border: Border.all(width: 1,color: Colors.grey[300])
-      //   ),
-      //   padding: EdgeInsets.all(20),
-      //   child: Text(
-      //       'This is HR admin panal, ready to use... This is HR admin panal  This is HR admin panal, ready to use...  This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal, ready to use... This is HR admin panal This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal This is HR admin panal, ready to use... This is HR admin panalv This is HR admin panal This is HR admin panal, ready to use... This is HR admin panal, ready to use... This is HR admin panal, ready to use... This is HR admin panal, ready to use... This is HR admin panal, ready to use...'),
-      // ),
     );
   }
 }
+
+String header = 'About App';
+String body =
+    "Our mission is to enable our clients to realize the full potential of their business by consistently offering world-class technological products, services and solutions to enhance their profitability and perception. We are determined to positively impact the lives of our employees, clients, partners, and the communities in which we operate. Our mission is to enable our clients to realize the full potential of their business by consistently offering world-class technological products, services and solutions to enhance their profitability and perception. We are determined to positively impact the lives of our employees, clients, partners, and the communities in which we operate.";
