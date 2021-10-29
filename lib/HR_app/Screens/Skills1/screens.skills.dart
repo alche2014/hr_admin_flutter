@@ -24,7 +24,7 @@ class _Skills1State extends State<Skills1> {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: [ 
                   //--------------------textfield-----------------------------
                   TextFormField(
                     controller: _textcontroller,

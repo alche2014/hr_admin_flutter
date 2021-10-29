@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:hr_admin/HR_app/Screens/Skills/chip_maker.dart';
 import 'package:hr_admin/HR_app/Screens/Skills1/chip_maker1.dart';
 import 'package:hr_admin/HR_app/app_bar.dart';
@@ -10,7 +11,8 @@ class Skills extends StatefulWidget {
 }
 
 class _SkillsState extends State<Skills> {
-  // TextEditingController _textcontroller = new TextEditingController();
+  TextEditingController _textcontroller = new TextEditingController();
+  final node = FocusNode();
   var _dropdownValue;
 
   @override
@@ -29,58 +31,115 @@ class _SkillsState extends State<Skills> {
                   children: [
                     //--------------------textfield-----------------------------
 
-                    Container(
-                      // height: 70,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                          color: Colors.grey[300],
-                          width: 1,
-                        ),
+                    TypeAheadFormField(
+                      textFieldConfiguration: TextFieldConfiguration(
+                        decoration: TextFieldDecoration('Skills'),
+                        controller: _textcontroller,
+                        focusNode: node,
                       ),
-                      child: DropdownButtonFormField(
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(0),
-                            border: const OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
+                      suggestionsCallback: (Pattern) =>
+                          Chipmaker1.choosed1.where(
+                        (element) => element
+                            .toLowerCase()
+                            .contains(Pattern.toLowerCase()),
+                      ),
+                      getImmediateSuggestions: true,
+                      hideSuggestionsOnKeyboardHide: false,
+                      onSuggestionSelected: (value) {
+                        setState(() {
+                          // _dropdownValue = value;
+                          if (Chipmaker.choosed.contains(value)) {
+                            // return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Already Selected'),
                               ),
+                            );
+                          } else {
+                            Chipmaker.choosed.add(value);
+                          }
+                        });
+                      },
+                      itemBuilder: (_, String element) {
+                        return ListTile(
+                          title: Text(element),
+                        );
+                      },
+                      noItemsFoundBuilder: (context) {
+                        return Column(
+                          children: [
+                            ListTile(
+                              title: Text('No Sugestion Found'),
                             ),
-                            labelText: "Skills",
-                            labelStyle:
-                                TextStyle(fontSize: 12, color: Colors.grey),
-                            filled: true,
-                            fillColor: Colors.white),
-                        value: _dropdownValue,
-                        items: Chipmaker1.choosed1
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style:
-                                  TextStyle(fontSize: 12, color: Colors.grey),
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            // _dropdownValue = value;
-                            if (Chipmaker.choosed.contains(value)) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Already Selected'),
-                                ),
-                              );
-                            } else {
-                              Chipmaker.choosed.add(value);
-                            }
-                          });
-                        },
-                      ),
+                            ListTile(
+                              leading: Icon(Icons.add),
+                              title: Text('Add to List'),
+                              onTap: () {
+                                setState(() {
+                                  Chipmaker.choosed.add(_textcontroller.text);
+                                  Chipmaker1.choosed1.add(_textcontroller.text);
+                                  _textcontroller.clear();
+                                  node.unfocus();
+                                });
+                              },
+                            )
+                          ],
+                        );
+                      },
                     ),
+
+                    // Container(
+                    //   // height: 70,
+                    //   padding: EdgeInsets.symmetric(horizontal: 10),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(5),
+                    //     border: Border.all(
+                    //       color: Colors.grey[300],
+                    //       width: 1,
+                    //     ),
+                    //   ),
+                    //   child: DropdownButtonFormField(
+                    //     decoration: InputDecoration(
+                    //         contentPadding: EdgeInsets.all(0),
+                    //         border: const OutlineInputBorder(
+                    //           borderSide: BorderSide.none,
+                    //           borderRadius: BorderRadius.all(
+                    //             Radius.circular(10),
+                    //           ),
+                    //         ),
+                    //         labelText: "Skills",
+                    //         labelStyle:
+                    //             TextStyle(fontSize: 12, color: Colors.grey),
+                    //         filled: true,
+                    //         fillColor: Colors.white),
+                    //     value: _dropdownValue,
+                    //     items: Chipmaker1.choosed1
+                    //         .map<DropdownMenuItem<String>>((String value) {
+                    //       return DropdownMenuItem<String>(
+                    //         value: value,
+                    //         child: Text(
+                    //           value,
+                    //           style:
+                    //               TextStyle(fontSize: 12, color: Colors.grey),
+                    //         ),
+                    //       );
+                    //     }).toList(),
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         // _dropdownValue = value;
+                    //         if (Chipmaker.choosed.contains(value)) {
+                    //           ScaffoldMessenger.of(context).showSnackBar(
+                    //             const SnackBar(
+                    //               content: Text('Already Selected'),
+                    //             ),
+                    //           );
+                    //         } else {
+                    //           Chipmaker.choosed.add(value);
+                    //         }
+                    //       });
+                    //     },
+                    //   ),
+                    // ),
 
                     //     TextFormField(
                     //       controller: _textcontroller,
