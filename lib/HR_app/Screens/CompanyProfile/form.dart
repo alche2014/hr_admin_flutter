@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hr_admin/HR_app/constants.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+const ColorRed = Color(0xffC53B4B);
+const ColorGrey = Color(0xff737373);
+
 class Company_Profile_Form extends StatefulWidget {
   @override
   _Company_Profile_FormState createState() => _Company_Profile_FormState();
@@ -18,6 +21,32 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
   var _dropdownValue1;
   var _dropdownValue2;
   var _dropdownValue3;
+  TextEditingController _createNewDomain = new TextEditingController();
+  TextEditingController _editDomain = new TextEditingController();
+  List<String> _myDomains = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Start listening to changes.
+    _createNewDomain.addListener(_printLatestValue);
+  }
+
+  void _printLatestValue() {
+    print('Second text field: ${_createNewDomain.text}');
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    // _createNewDomain.text = null;
+    _createNewDomain.dispose();
+    _editDomain.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -68,6 +97,298 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
             ),
           ),
           SizedBox(height: 30),
+//------------------Domains--------------------//
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Container(
+              // height: 115,
+              decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.grey[300]),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Domain(s)',
+                            style: TextStyle(fontSize: 13, color: ColorGrey)),
+                        //================CreateNew========================//
+                        TextButton(
+                            onPressed: () {
+                              showDialog(
+                                //showdialog on Apply now
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) => AlertDialog(
+                                  // backgroundColor: Colors.grey[100],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30)),
+                                  title: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(''),
+                                      Text(
+                                        'ADD DOMAIN',
+                                        style: TextStyle(color: kPrimaryRed),
+                                      ),
+                                      IconButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          icon: Icon(Icons.close)),
+                                    ],
+                                  ), //on which popup pops
+                                  content: Container(
+                                    height: 200,
+                                    width:
+                                        MediaQuery.of(context).size.width * 1,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(height: 20),
+                                              Text(
+                                                "Domain's",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey),
+                                              ),
+                                              SizedBox(height: 8),
+                                              TextField(
+                                                controller: _createNewDomain,
+                                                decoration: InputDecoration(
+                                                  hintText: "Domain's",
+                                                  hintStyle: TextStyle(
+                                                      color: Colors.grey),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    borderSide:
+                                                        const BorderSide(
+                                                      color: Colors.transparent,
+                                                    ),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    borderSide: BorderSide(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.4),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(height: 10),
+                                            ]),
+                                        Row(
+                                          children: [
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                  setState(() {
+                                                    _myDomains.add(
+                                                        _createNewDomain.text);
+                                                    _createNewDomain.clear();
+                                                  });
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                    //button used in dialog
+                                                    primary: Colors.red[800],
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        7))),
+                                                child: Text(
+                                                  'ADD',
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                )),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                              //================CreateNew========================//
+                            },
+                            child: Text('Create New',
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 13,
+                                    color: ColorRed)))
+                      ]),
+                  //---------------------------//
+                  if (_myDomains.length > 0)
+                    for (int i = 0; i < _myDomains.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(_myDomains[i],
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      fontSize: 13,
+                                      color: Colors.blue)),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: InkWell(
+                                  splashColor: ColorRed.withOpacity(0.3),
+                                  onTap: () {
+                                    showDialog(
+                                      //showdialog on Apply now
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => AlertDialog(
+                                        // backgroundColor: Colors.grey[100],
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        title: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(''),
+                                            Text(
+                                              'EDIT DOMAIN',
+                                              style:
+                                                  TextStyle(color: kPrimaryRed),
+                                            ),
+                                            IconButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                icon: Icon(Icons.close)),
+                                          ],
+                                        ), //on which popup pops
+                                        content: Container(
+                                          height: 200,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              1,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    SizedBox(height: 20),
+                                                    Text(
+                                                      "Domain's",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Colors.grey),
+                                                    ),
+                                                    SizedBox(height: 8),
+                                                    TextField(
+                                                      controller: _editDomain,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText: _myDomains[i],
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(4),
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                          ),
+                                                        ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(4),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.4),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                  ]),
+                                              Row(
+                                                children: [
+                                                  ElevatedButton(
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                        setState(() {
+                                                          _myDomains[i] =
+                                                              _editDomain.text;
+                                                          _editDomain.clear();
+                                                        });
+                                                      },
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              //button used in dialog
+                                                              primary: Colors
+                                                                  .red[800],
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              7))),
+                                                      child: Text(
+                                                        'SAVE',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      )),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                    //================Edit========================//
+                                  },
+                                  child: Text('Edit',
+                                      style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 13,
+                                          color: ColorRed)),
+                                ),
+                              )
+                            ]),
+                      ),
+                  //---------------------------//
+                  SizedBox(height: 20),
+                ]),
+              ),
+            ),
+          ),
+//------------------Domains--------------------//
 //------------------textfields--------------------
           TextFormField(
             textInputAction: TextInputAction.next,
@@ -259,11 +580,11 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
                     _controller3.text.isNotEmpty &&
                     _controller4.text.isNotEmpty &&
                     _controller5.text.isNotEmpty &&
-                     _controller6.text.isNotEmpty &&
+                    _controller6.text.isNotEmpty &&
                     _controller7.text.isNotEmpty &&
                     _dropdownValue1 != null &&
                     _dropdownValue2 != null &&
-                    _dropdownValue3 != null ) {
+                    _dropdownValue3 != null) {
                   Navigator.of(context).pop();
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -291,3 +612,5 @@ class _Company_Profile_FormState extends State<Company_Profile_Form> {
     );
   }
 }
+
+const kPrimaryRed = Color(0xffC53B4B);

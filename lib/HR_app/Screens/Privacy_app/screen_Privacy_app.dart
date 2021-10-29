@@ -36,16 +36,78 @@ class _PrivacyAppState extends State<PrivacyApp> {
                       SizedBox(height: 20),
                       Text(body1,
                           style: TextStyle(
-                              fontSize: 13, color: Color(0XFF5B5B5B))),
+                              height: 1.5,fontSize: 13, color: Color(0XFF5B5B5B))),
                       SizedBox(height: 40),
                       //-----------------------------------------------------------//
                       Text(header2,
                           style: TextStyle(
-                              fontSize: 16, color: Color(0XFFC53B4B))),
+                              fontSize: 16, color: Color(0XFF535353))),
                       SizedBox(height: 20),
                       Text(body2,
                           style: TextStyle(
-                              fontSize: 13, color: Color(0XFF5B5B5B))),
+                              height: 1.5,fontSize: 13, color: Color(0XFF5B5B5B))),
+                      //-----------------------------------------------------------//
+                      SizedBox(height: 40),
+                      Text(header3,
+                          style: TextStyle(
+                              fontSize: 16, color: Color(0XFF535353))),
+                      SizedBox(height: 20),
+                      Text(body3,
+                          style: TextStyle(
+                              height: 1.5,fontSize: 13, color: Color(0XFF5B5B5B))),
+                      SizedBox(height: 10),
+                      RichText(
+                        text: TextSpan(
+                          text: '• ',
+                          style:
+                              TextStyle(color: Color(0XFF5B5B5B), fontSize: 13),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: bullet1,
+                                style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      RichText(
+                        text: TextSpan(
+                          text: '• ',
+                          style:
+                              TextStyle(color: Color(0XFF5B5B5B), fontSize: 13),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: bullet2,
+                                style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      RichText(
+                        text: TextSpan(
+                          text: '• ',
+                          style:
+                              TextStyle(color: Color(0XFF5B5B5B), fontSize: 13),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: bullet3,
+                                style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      RichText(
+                        text: TextSpan(
+                          text: '• ',
+                          style:
+                              TextStyle(color: Color(0XFF5B5B5B), fontSize: 13),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: bullet4,
+                                style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 5),
                     ]),
               ),
             ],
@@ -68,7 +130,7 @@ String header3 = 'Service Providers';
 String body3 =
     'We may employ third-party companies and individuals due to the following reasons: ';
 
-// To facilitate our Service
-// To provide the Service on our behalf;
-// To perform Service-related services; or
-// To assist us in analyzing how our Service is used.
+String bullet1 = 'To facilitate our Service;';
+String bullet2 = 'To provide the Service on our behalf;';
+String bullet3 = 'To perform Service-related services; or';
+String bullet4 = 'To assist us in analyzing how our Service is used.';
