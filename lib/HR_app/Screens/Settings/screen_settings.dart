@@ -377,7 +377,7 @@ class _SettingsState extends State<Settings> {
                           Row(
                             children: [
                               Icon(
-                                Icons.notifications,
+                                Icons.admin_panel_settings,
                                 color: kPrimaryColor,
                               ),
                               SizedBox(width: 10),
