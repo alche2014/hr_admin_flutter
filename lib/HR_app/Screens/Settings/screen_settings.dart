@@ -9,6 +9,7 @@ import 'package:hr_admin/HR_app/Screens/Notification/screen_notification.dart';
 import 'package:hr_admin/HR_app/Screens/OfficeLocation/screen_office_location.dart';
 import 'package:hr_admin/HR_app/Screens/Personal_Information/form.dart';
 import 'package:hr_admin/HR_app/Screens/Privacy_app/screen_Privacy_app.dart';
+import 'package:hr_admin/HR_app/Screens/Roles_&_Permissions/screen_roles&permissions.dart';
 import 'package:hr_admin/HR_app/Screens/ShiftSchedual/screen_shift_schedule.dart';
 import 'package:hr_admin/HR_app/Screens/Skills1/screens.skills.dart';
 import 'package:hr_admin/HR_app/constants.dart';
@@ -351,6 +352,49 @@ class _SettingsState extends State<Settings> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Material(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ScreenRolesAndPermmissions()));
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(width: 1, color: Colors.grey),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.notifications,
+                                color: kPrimaryColor,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'Roles & Persmissions',
+                                style: TextStyle(
+                                    color: Colors.grey[600], fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),

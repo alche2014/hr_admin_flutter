@@ -89,7 +89,8 @@ class _DashBoardState extends State<DashBoard>
   }
 
   void dispose() {
-    _controller.dispose();
+    if(totalET == mycard1[i].totalEmployee)
+      _controller.dispose();
     super.dispose();
   }
 
