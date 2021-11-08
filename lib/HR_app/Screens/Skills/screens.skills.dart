@@ -15,7 +15,7 @@ class Skills extends StatefulWidget {
 class _SkillsState extends State<Skills> {
   TextEditingController _textcontroller = new TextEditingController();
   final node = FocusNode();
-  var _dropdownValue;
+  // var _dropdownValue;
 
   @override
   Widget build(BuildContext context) {
